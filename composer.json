@@ -1,0 +1,15 @@
+{
+    "name": "projet/wiitheure",
+    "authors": [
+        {
+            "name": "Guerlainpm",
+            "email": "46000981+Guerlainpm@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": {
+          "App\\": "src/"
+      }
+    }
+}
