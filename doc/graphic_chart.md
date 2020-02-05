@@ -23,3 +23,16 @@
     - p-normal: xl: .text-lg, lg: text-base, md: text-base, sm: text-sm
     - p-big: xl: .text-xl, lg: text-lg, md: text-lg, sm: text-base
     - p-small: xl: .text-base, lg: text-base, md: text-sm, sm: text-sm
+
+## margin & padding
+
+- text :
+    - p-big, p-normal under h1 (m-3),
+    - p-small under h1 (m-2),
+    - p-normal, p-big under p-normal, p-big (m-2)
+    - p-small under p-small (m-2)
+
+- block :
+    - padding-normal (p-3)
+    - padding-small (p-2)
+    - padding-big (p-4)
