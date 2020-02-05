@@ -1,6 +1,7 @@
 <?php
 namespace App;
-
+use App\Controllers\UserController;
+use App\Controllers\WiitController;
 
 class Router {
     private $method;
@@ -13,12 +14,12 @@ class Router {
 
     public function run() {
         $userController = new UserController();
-        $wittController = new WittController();
+        $wiitController = new WiitController();
 
         if ($this->method == "GET") {
 
             if ($this->url == "/") {
-                $wittController->index(); 
+                $wiitController->index(); 
             }
 
             elseif ($this->url == "/authentification") {
@@ -29,7 +30,7 @@ class Router {
         elseif ($this->method == "POST") {
 
             if (preg_match('#^\/profil\/([0-9]+)$#',$this->url,$match)) {
-                $wittController->show($match[1]);
+                $wiitController->show($match[1]);
             }
     
             elseif ($this->url == "/login") {
