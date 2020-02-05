@@ -13,6 +13,16 @@
         - dark: #004ba0
 - grey: #eeeeee
 
+## font-family:
+- titel : Sigmar One link ("https://fonts.googleapis.com/css?family=Sigmar+One&display=swap")
+```css
+    font-family: 'Sigmar One', cursive, sans-serif;
+```
+- text : Catamaran("https://fonts.googleapis.com/css?family=Catamaran:400,700,900&display=swap")
+```css
+    font-family: 'Catamaran', sans-serif;
+```
+
 ## font-size :
 
 - title :
