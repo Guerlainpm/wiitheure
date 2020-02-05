@@ -1,25 +1,7 @@
 @tailwind base;
 
 @tailwind components;
-.bg-color-primary {
-    background-color: #0d47a1;
-}
-.bg-color-light {
-    background-color: #5472d3;
-}
-.bg-color-dark {
-    background-color: #002171;
-}
 
-.bg-color-primary2 {
-    background-color: #0d47a1;
-}
-.bg-color-light2 {
-    background-color: #5472d3;
-}
-.bg-color-dark2 {
-    background-color: #002171;
-}
 @tailwind utilities;
 
 
