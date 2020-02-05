@@ -20,4 +20,6 @@
     - h2: xl: .text-4xl, lg: .text-3xl, md: .text-2xl, sm: .text-xl,
     - h3: xl: .text-3xl, lg: .text-2xl, md: .text-2xl, sm: .text-xl,
 - text :
-    p-normal: xl: .text-lg, lg: text-base, 
+    - p-normal: xl: .text-lg, lg: text-base, md: text-base, sm: text-sm
+    - p-big: xl: .text-xl, lg: text-lg, md: text-lg, sm: text-base
+    - p-small: xl: .text-base, lg: text-base, md: text-sm, sm: text-sm
