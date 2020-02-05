@@ -44,6 +44,40 @@ class Manager {
         $req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
         $req->execute();
     }
+    /**
+     * option [
+     *      [
+     *          field => "name",
+     *          value => "colin"
+     *      ]
+     * ]
+     * where [
+     *      [
+     *          field => "id",
+     *          value => 3
+     *      ]
+     * ]
+     */
+    public function update(array $option, array $where) {
+        $wheres = "";
+        $values = "";
+        foreach ($where as $key => $value) {
+            if ($key >= 1) {
+                $wheres .= " AND ". $value["field"] ."=\"".$value["value"]."\"";
+            } else {
+                $wheres .= " ".$value["field"]."=\"". $value["value"]."\"";
+            }
+        }
+        foreach ($option as $key => $value) {
+            if ($key >= 1) {
+                $values .= " ,". $value["field"] ."=\"".$value["value"]."\"";
+            } else {
+                $values .= " ".$value["field"]."=\"". $value["value"]."\"";
+            }
+        }
+        $req = $this->pdo->prepare("UPDATE ". $this->table ." SET ". $values ." WHERE ". $wheres.";");
+        $req->execute();
+    }
     public function find(array $option) {
         $values = "";
         foreach ($option as $key => $value) {
