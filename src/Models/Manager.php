@@ -8,6 +8,7 @@ class Manager {
     public function __construct($table) {
         $this->table = $table;
         $this->pdo = new \PDO("mysql:host=localhost;dbname=wiitheure", "root", "root");
+        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
     /**
      * option [
