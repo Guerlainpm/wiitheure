@@ -21,7 +21,7 @@ class Controller
 
   public function views($url, $data = [])
   {
-    require VIEW.$url;
+    require VIEWS.$url;
   }
 
   public function manager($manager)
