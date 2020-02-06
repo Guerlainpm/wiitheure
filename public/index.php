@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 define('SRC',__DIR__ . '/../src/');
 define('VIEWS',__DIR__ . '/../src/Views/');
