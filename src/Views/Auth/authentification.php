@@ -18,9 +18,9 @@
         <div>
             <form action="/register" method="post">
                 <label for="username">Username</label>
-                <input id="username" type="text">
+                <input id="username" type="text" name="username">
                 <label for="password">Password</label>
-                <input id="password" type="password">
+                <input id="password" type="password" name="password">
                 <label for="confirm-password">Password</label>
                 <input id="confirm-password" type="password">
                 <button type="submit">Submit</button>
@@ -33,6 +33,6 @@
     </footer>
 
 <?php 
-$content = ob_end_clean();
+$content = ob_get_clean();
 
 require VIEWS . '/template.php';
