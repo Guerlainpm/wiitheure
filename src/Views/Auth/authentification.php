@@ -4,7 +4,7 @@
     <header>
         <h1>Login And Register</h1>
     </header>
-    <main class="flex">
+    <main class="">
         <div>
             <form action="/login" method="post">
                 <label for="username">Username</label>
