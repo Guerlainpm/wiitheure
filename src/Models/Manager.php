@@ -79,7 +79,7 @@ class Manager {
         $req = $this->pdo->prepare("UPDATE ". $this->table ." SET ". $values ." WHERE ". $wheres.";");
         $req->execute();
     }
-    public function find(array $option) {
+    public function find(array $option, $classPath = null) {
         $values = "";
         foreach ($option as $key => $value) {
             if ($key >= 1) {
@@ -89,11 +89,17 @@ class Manager {
             }
         }
         $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ".$values.";");
+        if (isset($classPath)) {
+            $req->setFetchMode(\PDO::FETCH_CLASS, $classPath);
+        }
         $req->execute();
         return $req->fetchAll();
     }
-    public function findAll() {
+    public function findAll($classPath = null) {
         $req = $this->pdo->prepare("SELECT * FROM ". $this->table);
+        if (isset($classPath)) {
+            $req->setFetchMode(\PDO::FETCH_CLASS, $classPath);
+        }
         $req->execute();
         return $req->fetchAll();
     }
