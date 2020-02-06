@@ -24,10 +24,10 @@ class Controller
     require VIEWS.$url;
   }
 
-  public function manager($manager)
+  public function manager($manager, $table)
   {
-    $name = 'App\Models\\'.$manager;
-    $manager = new $name;
+    $name = 'App\\Models\\'.$manager;
+    $manager = new $name($table);
     return $manager;
   }
 }
