@@ -33,6 +33,6 @@
     </footer>
 
 <?php 
-$content = ob_end_clean();
+$content = ob_get_clean();
 
 require VIEWS . '/template.php';
