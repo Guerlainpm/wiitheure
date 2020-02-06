@@ -33,17 +33,19 @@ class Manager {
     public function insert(array $option) {
         $values = "";
         $fields = "";
+        $exec = [];
         foreach ($option as $key => $value) {
             if ($key >= 1) {
-                $values .= ", \"".$value["value"]."\"";
                 $fields .= ", \"".$value["field"]."\"";
             } else {
-                $values .= "\"".$value["field"]."\"";
                 $fields .= "\"".$value["field"]."\"";
             }
+            $values .= " :".$value["field"];
+            $exec = array_merge($exec, [$value["field"] => $value["value"]]);
         }
+        //$req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
         $req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
-        $req->execute();
+        $req->execute($exec);
     }
     /**
      * option [
