@@ -34,14 +34,17 @@ class Manager {
         $values = "";
         $fields = "";
         $exec = [];
+        $nb = 0;
         foreach ($option as $field => $value) {
-            if (array_search($value, $option) >= 1) {
-                $fields .= ", \"".$field."\"";
+            if ($nb >= 1) {
+                $fields .= ", ".$field;
+                $values .= ", :".$field;
             } else {
-                $fields .= "\"".$value."\"";
+                $fields .= $field;
+                $values .= " :".$field;
             }
-            $values .= " :".$field;
             $exec = array_merge($exec, [$field => $value]);
+            $nb ++;
         }
         $req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
         $req->execute($exec);
@@ -63,31 +66,37 @@ class Manager {
     public function update(array $option, array $where) {
         $wheres = "";
         $values = "";
+        $nbW = 0;
         foreach ($where as $field => $value) {
-            if ($key >= 1) {
+            if ($nbW >= 1) {
                 $wheres .= " AND ". $field ."=\"".$value."\"";
             } else {
                 $wheres .= " ".$field."=\"". $value."\"";
             }
+            $nbW++;
         }
+        $nb = 0;
         foreach ($option as $field => $value) {
-            if ($key >= 1) {
+            if ($nb >= 1) {
                 $values .= " ,". $field ."=\"".$value."\"";
             } else {
                 $values .= " ".$field."=\"". $value."\"";
             }
+            $nb++;
         }
         $req = $this->pdo->prepare("UPDATE ". $this->table ." SET ". $values ." WHERE ". $wheres.";");
         $req->execute();
     }
     public function find(array $option, $classPath = null) {
         $values = "";
+        $nb = 0;
         foreach ($option as $field => $value) {
-            if ($key >= 1) {
+            if ($nb >= 1) {
                 $values .= " AND ". $field ."=\"".$value."\"";
             } else {
                 $values .= " ".$field."=\"". $value."\"";
             }
+            $nb++;
         }
         $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ".$values.";");
         if (isset($classPath)) {
