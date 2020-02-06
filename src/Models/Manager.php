@@ -20,11 +20,11 @@ class Manager {
      */
     public function delete(array $option) {
         $values = "";
-        foreach ($option as $key => $value) {
+        foreach ($option as $field => $value) {
             if ($key >= 1) {
-                $values .= " AND ". $value["field"] ."=\"".$value["value"]."\"";
+                $values .= " AND ". $field ."=\"".$value."\"";
             } else {
-                $values .= " ".$value["field"]."=\"". $value["value"]."\"";
+                $values .= " ".$field."=\"". $value."\"";
             }
         }
         $req = $this->pdo->prepare("DELETE FROM ". $this->table ." WHERE". $values .";");
@@ -34,23 +34,22 @@ class Manager {
         $values = "";
         $fields = "";
         $exec = [];
-        foreach ($option as $key => $value) {
-            if ($key >= 1) {
-                $fields .= ", \"".$value["field"]."\"";
+        foreach ($option as $field => $value) {
+            if (array_search($value, $option) >= 1) {
+                $fields .= ", \"".$field."\"";
             } else {
-                $fields .= "\"".$value["field"]."\"";
+                $fields .= "\"".$value."\"";
             }
-            $values .= " :".$value["field"];
-            $exec = array_merge($exec, [$value["field"] => $value["value"]]);
+            $values .= " :".$field;
+            $exec = array_merge($exec, [$field => $value]);
         }
-        //$req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
         $req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
         $req->execute($exec);
     }
     /**
      * option [
-     *      [
-     *          field => "name",
+     * 
+     *          "username" => "name",
      *          value => "colin"
      *      ]
      * ]
@@ -64,18 +63,18 @@ class Manager {
     public function update(array $option, array $where) {
         $wheres = "";
         $values = "";
-        foreach ($where as $key => $value) {
+        foreach ($where as $field => $value) {
             if ($key >= 1) {
-                $wheres .= " AND ". $value["field"] ."=\"".$value["value"]."\"";
+                $wheres .= " AND ". $field ."=\"".$value."\"";
             } else {
-                $wheres .= " ".$value["field"]."=\"". $value["value"]."\"";
+                $wheres .= " ".$field."=\"". $value."\"";
             }
         }
-        foreach ($option as $key => $value) {
+        foreach ($option as $field => $value) {
             if ($key >= 1) {
-                $values .= " ,". $value["field"] ."=\"".$value["value"]."\"";
+                $values .= " ,". $field ."=\"".$value."\"";
             } else {
-                $values .= " ".$value["field"]."=\"". $value["value"]."\"";
+                $values .= " ".$field."=\"". $value."\"";
             }
         }
         $req = $this->pdo->prepare("UPDATE ". $this->table ." SET ". $values ." WHERE ". $wheres.";");
@@ -83,11 +82,11 @@ class Manager {
     }
     public function find(array $option, $classPath = null) {
         $values = "";
-        foreach ($option as $key => $value) {
+        foreach ($option as $field => $value) {
             if ($key >= 1) {
-                $values .= " AND ". $value["field"] ."=\"".$value["value"]."\"";
+                $values .= " AND ". $field ."=\"".$value."\"";
             } else {
-                $values .= " ".$value["field"]."=\"". $value["value"]."\"";
+                $values .= " ".$field."=\"". $value."\"";
             }
         }
         $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ".$values.";");
