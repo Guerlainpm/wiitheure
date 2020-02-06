@@ -4,7 +4,7 @@
     <header>
         <h1>Login And Register</h1>
     </header>
-    <main>
+    <main class="flex">
         <div>
             <form action="/login" method="post">
                 <label for="username">Username</label>
@@ -36,3 +36,4 @@
 $content = ob_get_clean();
 
 require VIEWS . '/template.php';
+
