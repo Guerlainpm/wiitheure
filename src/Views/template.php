@@ -10,9 +10,7 @@
       <title></title>
     </head>
     <body>
-      <main>
         <?php echo $content; ?>
-      </main>
     </body>
     </html>
   <?php
