@@ -28,7 +28,7 @@ class WiitController extends Controller {
     public function delete()
     {
       if (isset($_SESSION["user"])) {
-        $this->manager('WiitManager')->deleteWiit()
+        $this->manager('WiitManager')->deleteWiit();
       }
 
     }
