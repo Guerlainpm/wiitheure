@@ -20,12 +20,14 @@ class Manager {
      */
     public function delete(array $option) {
         $values = "";
+        $index = 0;
         foreach ($option as $field => $value) {
-            if ($key >= 1) {
+            if ($index >= 1) {
                 $values .= " AND ". $field ."=\"".$value."\"";
             } else {
                 $values .= " ".$field."=\"". $value."\"";
             }
+            $index ++;
         }
         $req = $this->pdo->prepare("DELETE FROM ". $this->table ." WHERE". $values .";");
         $req->execute();
@@ -34,14 +36,17 @@ class Manager {
         $values = "";
         $fields = "";
         $exec = [];
+        $index = 0;
         foreach ($option as $field => $value) {
-            if (array_search($value, $option) >= 1) {
-                $fields .= ", \"".$field."\"";
+            if ($index >= 1) {
+                $fields .= ", ".$field;
+                $values .= ", :".$field;
             } else {
-                $fields .= "\"".$value."\"";
+                $fields .= $field;
+                $values .= " :".$field;
             }
-            $values .= " :".$field;
             $exec = array_merge($exec, [$field => $value]);
+            $index ++;
         }
         $req = $this->pdo->prepare("INSERT INTO ". $this->table ." (". $fields .") VALUES (". $values .");");
         $req->execute($exec);
@@ -61,35 +66,41 @@ class Manager {
      * ]
      */
     public function update(array $option, array $where) {
-        $wheres = "";
+        $whereReq = "";
         $values = "";
+        $index = 0;
         foreach ($where as $field => $value) {
-            if ($key >= 1) {
-                $wheres .= " AND ". $field ."=\"".$value."\"";
+            if ($index >= 1) {
+                $whereReq .= " AND ". $field ."=\"".$value."\"";
             } else {
-                $wheres .= " ".$field."=\"". $value."\"";
+                $whereReq .= " ".$field."=\"". $value."\"";
             }
+            $index++;
         }
+        $index = 0;
         foreach ($option as $field => $value) {
-            if ($key >= 1) {
+            if ($index >= 1) {
                 $values .= " ,". $field ."=\"".$value."\"";
             } else {
                 $values .= " ".$field."=\"". $value."\"";
             }
+            $index++;
         }
-        $req = $this->pdo->prepare("UPDATE ". $this->table ." SET ". $values ." WHERE ". $wheres.";");
+        $req = $this->pdo->prepare("UPDATE ". $this->table ." SET ". $values ." WHERE ". $whereReq.";");
         $req->execute();
     }
     public function find(array $option, $classPath = null) {
-        $values = "";
+        $whereReq = "";
+        $index = 0;
         foreach ($option as $field => $value) {
-            if ($key >= 1) {
-                $values .= " AND ". $field ."=\"".$value."\"";
+            if ($index >= 1) {
+                $whereReq .= " AND ". $field ."=\"".$value."\"";
             } else {
-                $values .= " ".$field."=\"". $value."\"";
+                $whereReq .= " ".$field."=\"". $value."\"";
             }
+            $index++;
         }
-        $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ".$values.";");
+        $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ".$whereReq.";");
         if (isset($classPath)) {
             $req->setFetchMode(\PDO::FETCH_CLASS, $classPath);
         }
@@ -103,6 +114,11 @@ class Manager {
         }
         $req->execute();
         return $req->fetchAll();
+    }
+    public function redirect($url)
+    {
+        header("Location: ".$url);
+        exit();
     }
     /**
      * Get the value of table
