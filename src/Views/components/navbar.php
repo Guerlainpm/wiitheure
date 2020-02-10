@@ -12,15 +12,4 @@ ob_start();
   </div>
 </div>
 
-<<<<<<< HEAD
-
-
-
-
-
-
-</body>
-</html>
-=======
-<?php 
->>>>>>> b36f5c90d219e3235abb9c517d54c5d21c16fafa
+<?php
