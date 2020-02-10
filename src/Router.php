@@ -49,6 +49,11 @@ class Router {
                 $wiitController->create();
             }
 
+            elseif ($this->url == "/delete/wiit") {
+                $wiitController->delete();
+            }
+
+
         }
 
 
