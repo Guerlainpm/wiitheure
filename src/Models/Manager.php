@@ -115,6 +115,11 @@ class Manager {
         $req->execute();
         return $req->fetchAll();
     }
+    public function redirect($url)
+    {
+        header("Location: ".$url);
+        exit();
+    }
     /**
      * Get the value of table
      */ 

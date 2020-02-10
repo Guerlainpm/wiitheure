@@ -19,6 +19,14 @@ class UserManager extends \App\Models\Manager {
         $user = $user[0];
         if (password_verify($password, $user->getPassword())) {
             $_SESSION["user"] = $user;
+            $this->redirect("/");
+        } else {
+            $this->redirect("/authentification");
         }
+    }
+    public function deleteUser() {
+        $this->delete([
+            "id" => $_SESSION["user"]->getId()
+        ]);
     }
 }

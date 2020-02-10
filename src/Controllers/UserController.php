@@ -10,26 +10,41 @@ class UserController extends Controller {
     //post VV
     public function register() {
         $this->validator->validate([
-            "username" => ["required", "max:20", "alphaNumDash"],
-            "mail" => ["required", "email"],
+            "register-username" => ["required", "max:20", "alphaNumDash"],
+            "register-mail" => ["required", "email"],
             "password" => ["required", "max:255", "confirm"],
-            "passwordConfirm" => []
+            "passwordConfirm" => ["required"]
         ]);
-        if(!$validator->hasErrors()) {
-            $this->manager("UserManager").newUser(
-                $_POST["username"],
+        if(!$this->validator->hasErrors()) {
+            $this->manager("UserManager", "user")->newUser(
+                $_POST["register-username"],
                 $_POST["password"],
-                $_POST["mail"]
+                $_POST["register-mail"]
             );
+            $this->redirect("/");
+        } else {
+            $this->redirect("/authentification");
         }
     }
 
     public function login() {
         $this->manager("UserManager", "user")->login(
-            $_POST["username"],
-            $_POST["password"],
-            $_POST["mail"]
+            $_POST["login-username"],
+            $_POST["login-password"],
+            $_POST["login-mail"]
         );
+    }
+
+    public function delete() {
+        if (isset($_SESSION["user"])) {
+            $this->manager("UserManager", "user")->deleteUser();
+        }
+    }
+
+    public function logout() {
+        if (isset($_SESSION["user"])) {
+            unset($_SESSION["user"]);
+        }
     }
 
 }
