@@ -17,9 +17,9 @@ class UserController extends Controller {
         ]);
         if(!$validator->hasErrors()) {
             $this->manager("UserManager").newUser(
-                POST_["username"],
-                POST_["password"],
-                POST_["mail"]
+                $_POST["username"],
+                $_POST["password"],
+                $_POST["mail"]
             );
         }
     }
