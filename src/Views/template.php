@@ -11,6 +11,11 @@
       <title></title>
     </head>
     <body>
+      <nav>
+      <?php 
+        include VIEWS . "components/navbar.php";
+        ?>
+      </nav>
         <?php echo $content; ?>
     </body>
     </html>
