@@ -12,7 +12,7 @@
     </head>
     <body>
       <nav>
-      <?php 
+      <?php
         include VIEWS . "components/navbar.php";
         ?>
       </nav>
