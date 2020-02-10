@@ -16,10 +16,6 @@ catch(Exception $e)
 
 require '../vendor/autoload.php';
 
-$test = new \App\Controllers\UserController();
-
-$test->login();
-
 require SRC . 'helper.php';
 $router = new App\Router();
 $router->run();

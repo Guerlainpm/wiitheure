@@ -9,15 +9,16 @@ class UserManager extends \App\Models\Manager {
             "password" => password_hash($password, PASSWORD_DEFAULT),
             "mail" => htmlspecialchars($mail, ENT_QUOTES),
         ]);
+        $this->login($username, $password, $mail);
     }
     public function login(string $username, string $password, string $mail) {
         $user = $this->find([
             "username" => htmlspecialchars($username, ENT_QUOTES),
             "mail" => htmlspecialchars($mail, ENT_QUOTES),
         ], "\\App\\Models\\User");
-        if (password_verify('rasmuslerdorf', $hash);) {
-            
+        $user = $user[0];
+        if (password_verify($password, $user->getPassword())) {
+            $_SESSION["user"] = $user;
         }
-        
     }
 }

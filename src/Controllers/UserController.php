@@ -9,12 +9,12 @@ class UserController extends Controller {
     }
     //post VV
     public function register() {
-        /*$this->validator->validate([
+        $this->validator->validate([
             "username" => ["required", "max20", "alphaNumDash"],
             "mail" => ["required", "email"],
-            "password" => ["required", "max255"],
-            "confirm" => []
-        ]);*/
+            "password" => ["required", "max255", "confirm"],
+            "passwordConfirm" => []
+        ]);
         if(!$validator->errors()) {
             $this->manager("UserManager").newUser(
                 POST_["username"],
