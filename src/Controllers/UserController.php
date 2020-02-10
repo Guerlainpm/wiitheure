@@ -15,7 +15,7 @@ class UserController extends Controller {
             "password" => ["required", "max:255", "confirm"],
             "passwordConfirm" => []
         ]);
-        if(!$validator->errors()) {
+        if(!$validator->hasErrors()) {
             $this->manager("UserManager").newUser(
                 POST_["username"],
                 POST_["password"],
