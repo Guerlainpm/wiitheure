@@ -1,4 +1,4 @@
-<?php 
+<?php
    ob_start();
 ?>
 <main class="h-screen bg-light flex flex-col justify-center">
@@ -10,7 +10,7 @@
                 <label class="mb-2" for="username">Nom d'utilisateur</label>
                 <input class="mb-2 p-2   rounded border border-black" id="login-username" type="text" name="login-username">
                 <label class="mb-2" for="mail">Mail</label>
-                <input class="mb-12 p-2 rounded border border-black" id="login-mail" type="text" name="login-mail">
+                <input class="mb-2 p-2 rounded border border-black" id="login-mail" type="text" name="login-mail">
                 <label class="mb-2" for="password">Mot de passe</label>
                 <input class="mb-12 p-2 rounded border border-black" id="login-password" type="password" name="login-password">
                 <button class="p-2 rounded border border-black" type="submit">Envoyer</button>
@@ -33,7 +33,7 @@
         </div>
     </div>
 </main>
-<?php 
+<?php
 $content = ob_get_clean();
 
 require VIEWS . '/template.php';
