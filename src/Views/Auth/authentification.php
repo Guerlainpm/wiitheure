@@ -8,7 +8,7 @@
             <form class="flex flex-col p-4 px-12 text-center" action="/login" method="post">
                 <h2 class="mb-8">Se connecter</h2>
                 <label class="mb-2" for="username">Nom d'utilisateur</label>
-                <input class="mb-2 p-2   rounded border border-black" id="login-username" type="text" name="login-username">
+                <input class="mb-2 p-2 rounded border border-black" id="login-username" type="text" name="login-username">
                 <label class="mb-2" for="password">Mot de passe</label>
                 <input class="mb-12 p-2 rounded border border-black" id="login-password" type="password" name="login-password">
                 <button class="p-2 rounded border border-black" type="submit">Envoyer</button>
