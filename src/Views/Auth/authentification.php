@@ -1,4 +1,4 @@
-<?php 
+<?php
    ob_start();
 ?>
 <main class="flex flex-col justify-center">
@@ -35,7 +35,7 @@
         </div>
     </div>
 </main>
-<?php 
+<?php
 $content = ob_get_clean();
 
 require VIEWS . '/template.php';
