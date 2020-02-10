@@ -26,9 +26,9 @@ class UserController extends Controller {
 
     public function login() {
         $this->manager("UserManager", "user")->login(
-            "username",
-            "password",
-            "121212121"
+            $_POST["username"],
+            $_POST["password"],
+            $_POST["mail"]
         );
     }
 

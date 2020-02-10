@@ -14,7 +14,10 @@ class UserManager extends \App\Models\Manager {
         $user = $this->find([
             "username" => htmlspecialchars($username, ENT_QUOTES),
             "mail" => htmlspecialchars($mail, ENT_QUOTES),
-        ], );
-        password_verify('rasmuslerdorf', $hash);
+        ], "\\App\\Models\\User");
+        if (password_verify('rasmuslerdorf', $hash);) {
+            
+        }
+        
     }
 }
