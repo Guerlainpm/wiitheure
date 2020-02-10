@@ -16,13 +16,14 @@ class UserManager extends \App\Models\Manager {
             "username" => htmlspecialchars($username, ENT_QUOTES),
             "mail" => htmlspecialchars($mail, ENT_QUOTES),
         ], "\\App\\Models\\User");
+        if (!empty($user)) {
         $user = $user[0];
         if (password_verify($password, $user->getPassword())) {
             $_SESSION["user"] = $user;
             $this->redirect("/");
-        } else {
-            $this->redirect("/authentification");
         }
+      }
+      $this->redirect("/authentification");
     }
     public function deleteUser() {
         $this->delete([
