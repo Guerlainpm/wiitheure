@@ -14,7 +14,7 @@ class WiitController extends Controller {
         "citation" => []
       ]);
       if (!$this->validator->hasErrors()) {
-        $todo = $this->manager('WittManager')->create(
+        $this->manager('WittManager')->create(
           $_POST["content"],
           $_SESSION["user"]->getId()
         );
@@ -23,6 +23,14 @@ class WiitController extends Controller {
       }else {
         $this->redirect('/create');
       }
+    }
+
+    public function delete()
+    {
+      if (isset($_SESSION["user"])) {
+        $this->manager('WiitManager')->deleteWiit()
+      }
+
     }
 
 }

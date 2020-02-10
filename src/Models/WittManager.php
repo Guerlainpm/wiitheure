@@ -14,4 +14,11 @@
         "user_id" => $user_id
       ])
     }
+
+    public function deleteWiit()
+    {
+      $this->delete([
+        "id" => $_SESSION["user"]->getId()
+      ])
+    }
   }
