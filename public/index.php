@@ -1,4 +1,6 @@
 <?php
+require '../vendor/autoload.php';
+
 session_start();
 define('SRC',__DIR__ . '/../src/');
 define('VIEWS',__DIR__ . '/../src/Views/');
@@ -14,7 +16,7 @@ catch(Exception $e)
 */
 
 
-require '../vendor/autoload.php';
+
 
 require SRC . 'helper.php';
 $router = new App\Router();
