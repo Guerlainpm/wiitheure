@@ -39,12 +39,14 @@ class UserController extends Controller {
         if (isset($_SESSION["user"])) {
             $this->manager("UserManager", "user")->deleteUser();
         }
+        $this->redirect("/");
     }
 
     public function logout() {
         if (isset($_SESSION["user"])) {
             unset($_SESSION["user"]);
         }
+        $this->redirect("/");
     }
 
 }
