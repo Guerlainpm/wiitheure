@@ -1,10 +1,9 @@
 <?php
    ob_start();
 ?>
-<main>
-    <p>Accueil</p>
-</main>
-<?php 
+  <p>Accueil</p>
+
+<?php
 $content = ob_get_clean();
 
 require VIEWS . '/template.php';
