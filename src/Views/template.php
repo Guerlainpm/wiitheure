@@ -16,7 +16,7 @@
           include VIEWS . "components/navbar.php";
         ?>
       </nav>
-      <main class="flex-grow flex-1 container mx-auto">
+      <main class="flex-grow container mx-auto flex flex-col">
         <?php echo $content; ?>
       </main>
 
