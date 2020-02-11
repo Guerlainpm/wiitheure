@@ -29,4 +29,28 @@ class UserManager extends \App\Models\Manager {
             "id" => $_SESSION["user"]->getId()
         ]);
     }
+    public function follow($followed) {
+        if ($user_id != $_SESSION["user"]->getId()) {
+            $req = $this->pdo->prepare("INSERT INTO follow (user_id, followed) VALUES (:user_id, :followed);");
+            $req->execute([
+                "user_id" => $_SESSION["user"]->getId(),
+                "followed" => $followed
+            ]);
+        }
+    }
+    public function getAllSubPost() {
+        if (isset($_SESSION["user"])) {
+            /*$user = $this->find([
+                "id" => $_SESSION["user"]->getId(),
+                "mail" => htmlspecialchars($mail, ENT_QUOTES),
+            ], "\\App\\Models\\User");*/
+        }
+        /*if ($user_id != $_SESSION["user"]->getId()) {
+            $req = $this->pdo->prepare("INSERT INTO follow (user_id, followed) VALUES (:user_id, :followed);");
+            $req->execute([
+                "user_id" => $_SESSION["user"]->getId(),
+                "followed" => $followed
+            ]);
+        }*/
+    }
 }
