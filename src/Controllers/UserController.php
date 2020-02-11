@@ -9,6 +9,7 @@ class UserController extends Controller {
     }
     //post VV
     public function register() {
+      $_SESSION['old'] = $_POST;
         $this->validator->validate([
             "register-username" => ["required", "max:20", "alphaNumDash"],
             "register-mail" => ["required", "email"],
@@ -28,11 +29,22 @@ class UserController extends Controller {
     }
 
     public function login() {
-        $this->manager("UserManager", "user")->login(
-            $_POST["login-username"],
-            $_POST["login-password"],
-            $_POST["login-mail"]
-        );
+      $_SESSION['old'] = $_POST;
+      $this->validator->validate([
+          "login-username" => ["required"],
+          "login-password" => ["required"],
+          "login-mail" => ["required"]
+      ]);
+      if(!$this->validator->hasErrors()) {
+          $this->manager("UserManager", "user")->login(
+              $_POST["login-username"],
+              $_POST["login-password"],
+              $_POST["login-mail"]
+          );
+          $this->redirect("/");
+      } else {
+          $this->redirect("/authentification");
+      }
     }
 
     public function delete() {
