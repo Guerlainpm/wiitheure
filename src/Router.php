@@ -19,10 +19,11 @@ class Router {
         if ($this->method == "GET") {
 
             if ($this->url == "/") {
-                //var_dump($wiitController->getAllSubPost()["post"]);
-                
                 $wiitController->index();
-                //var_dump($wiitController->getAllSubPost()[1]);
+            }
+
+            elseif ($this->url == "/news") {
+                $wiitController->indexNews();
             }
 
             elseif ($this->url == "/authentification") {

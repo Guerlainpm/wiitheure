@@ -7,7 +7,9 @@ class WiitController extends Controller {
         $this->views('Wiit/index.php', ["posts" => $this->getAllSubPost(), "sub" => $this->getAllSub()]);
 
     }
-
+    public function indexNews() {
+      $this->views('Wiit/index.php', ["posts" => $this->getNewPost(), "sub" => $this->getAllSub()]);
+    }
     public function create()
     {
       if (isset($_SESSION["user"])) {
@@ -28,7 +30,7 @@ class WiitController extends Controller {
     }
     public function getAllSubPost() {
       if (isset($_SESSION["user"])) {
-        return $this->manager('WittManager', "post")->getAllSubPost();
+        return $this->manager('WittManager', "post")->getAllSubPostClass();
       } else {
         return [];
       }
@@ -45,7 +47,6 @@ class WiitController extends Controller {
       if (isset($_SESSION["user"])) {
         $this->manager('WiitManager')->deleteWiit();
       }
-
     }
 
 }
