@@ -1,7 +1,8 @@
 document.getElementById("create").addEventListener("click", function () {
+    document.getElementById("popupTitle").innerText = "create a wiit";
+    document.getElementById("popupForm").innerHTML = "<input class=\"w-full border-2 border-gray-500\" name=\"content\" value=\"\"/>" + document.getElementById("popupForm").innerHTML;
     document.getElementById("popup").className = "";
-    let popup = document.querySelector("#popup>div>div");
-    let header = document.querySelector("#popup>div>div");
+
 });
 
 document.getElementById("quit").addEventListener("click", function () {

@@ -18,7 +18,7 @@ class WiitController extends Controller {
           "citation" => []
         ]);
         if (!$this->validator->hasErrors()) {
-          $todo = $this->manager('WittManager', "post")->create(
+          $todo = $this->manager('WittManager', "post")->newPost(
             $_POST["content"],
             $_SESSION["user"]->getId()
           );
