@@ -12,9 +12,17 @@ class User {
     /**
      * Get the value of username
      */ 
+    public function constructor($username, $password, $mail, $create_at, $bio, $id) {
+        $this->username = $username;
+        $this->password = $password;
+        $this->mail = $mail;
+        $this->create_at = $create_at;
+        $this->bio = $bio;
+        $this->id = $id;
+    }
     public function getUsername()
     {
-        return $this->username;
+        return htmlspecialchars($this->username);
     }
 
     /**
@@ -34,7 +42,7 @@ class User {
      */ 
     public function getPassword()
     {
-        return $this->password;
+        return htmlspecialchars($this->password);
     }
 
     /**
@@ -54,7 +62,7 @@ class User {
      */ 
     public function getMail()
     {
-        return $this->mail;
+        return htmlspecialchars($this->mail);
     }
 
     /**
@@ -74,7 +82,7 @@ class User {
      */ 
     public function getCreate_at()
     {
-        return $this->create_at;
+        return htmlspecialchars($this->create_at);
     }
 
     /**
@@ -94,7 +102,7 @@ class User {
      */ 
     public function getBio()
     {
-        return $this->bio;
+        return htmlspecialchars($this->bio);
     }
 
     /**
@@ -114,7 +122,7 @@ class User {
      */ 
     public function getId()
     {
-        return $this->id;
+        return htmlspecialchars($this->id);
     }
 
     /**

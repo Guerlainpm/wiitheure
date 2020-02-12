@@ -1,16 +1,30 @@
 <?php
+<<<<<<< HEAD
 namespace \App\Models;
   /**
    *
    */
   class Wiit
+=======
+
+namespace App\Models;
+
+class Wiit
+>>>>>>> fee7b5209c4628bc8d93774ef7a72fba3e261be8
   {
     private $content;
-    private $created_at;
+    private $create_at;
     private $citation;
     private $id;
     private $user_id;
 
+    public function constructor($content, $create_at, $citation, $id, $user_id) {
+        $this->content = $content;
+        $this->created_at = $create_at;
+        $this->citation = $citation;
+        $this->id = $id;
+        $this->user_id = $user_id;
+    }
     /**
      * Get the value of Content
      *
@@ -40,7 +54,7 @@ namespace \App\Models;
      *
      * @return mixed
      */
-    public function getCreatedAt()
+    public function getCreateAt()
     {
         return $this->created_at;
     }
@@ -52,9 +66,9 @@ namespace \App\Models;
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreateAt($create_at)
     {
-        $this->created_at = $created_at;
+        $this->create_at = $create_at;
 
         return $this;
     }

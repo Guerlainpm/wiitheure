@@ -39,9 +39,12 @@ CREATE TABLE comment (
 CREATE TABLE follow (
     id int UNIQUE NOT NULL AUTO_INCREMENT,
     user_id int NOT NULL,
+    followed int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (followed) REFERENCES user(id),
     PRIMARY KEY(id)
 );
+#select user.id, followed, content from user inner join follow on follow.user_id = user.id inner join post on post.user_id = follow.followed;
 
 CREATE TABLE tag (
     id int UNIQUE NOT NULL AUTO_INCREMENT,
