@@ -1,38 +1,71 @@
-<?php 
-    ob_start();
+<?php
+   ob_start();
 ?>
-<header>
-    <h1>Login And Register</h1>
-</header>
-<main>
-    <div>
-        <form action="/login" method="post">
-            <label for="username">Username</label>
-            <input id="username" type="text">
-            <label for="password">Password</label>
-            <input id="password" type="password">
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+<main class="flex flex-col">
+    <div class="my-20 flex justify-center">
 
-    <div>
-        <form action="/register" method="post">
-            <label for="username">Username</label>
-            <input id="username" type="text">
-            <label for="password">Password</label>
-            <input id="password" type="password">
-            <label for="confirm-password">Password</label>
-            <input id="confirm-password" type="password">
-            <button type="submit">Submit</button>
-        </form>
+        <div class="p-10 px-40 border-r-2">
+            <form class="h-full flex flex-col justify-between" action="/login" method="post">
+                <div class=" flex flex-col ">
+                <h2 class="mb-6 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-center">Se connecter</h2>
+                <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="username">Nom
+                        d'utilisateur</label>
+                    <input class="mb-2 w-64 h-12 p-4 rounded border border-black" id="login-username" type="text"
+                        name="login-username" value="<?php echo getOld("login-username");?>">
+                    <p><?php echo getErrors("login-username"); ?></p>
+
+                    <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="mail">Mail</label>
+                    <input class="mb-2 w-64 h-12 p-4 rounded border border-black" id="login-mail" type="text"
+                        name="login-mail" value="<?php echo getOld("login-mail");?>">
+                    <p><?php echo getErrors("login-mail"); ?></p>
+
+                    <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="password">Mot de
+                        passe</label>
+                    <input class="w-64 h-12 p-4 rounded border border-black" id="login-password" type="password"
+                        name="login-password" value="<?php echo getOld("login-password");?>">
+                    <p><?php echo getErrors("login-password"); ?></p>
+
+
+                </div>
+                <button class="w-64 h-12 rounded border border-black" type="submit">Envoyer</button>
+            </form>
+        </div>
+
+        <div class="p-10 px-40">
+            <form class="h-full flex flex-col justify-between" action="/register" method="post">
+                <div class=" flex flex-col ">
+                   <h2 class="mb-6 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-center">S'enregistrer</h2>
+                    <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="username">Nom
+                    d'utilisateur</label>
+                    <input class="mb-2 w-64 h-12 p-4 rounded border border-black" id="register-username" type="text"
+                        name="register-username" value="<?php echo getOld("register-username");?>">
+                    <p><?php echo getErrors("register-username"); ?></p>
+
+                    <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="mail">Mail</label>
+                    <input class="mb-2w -64 h-12 p-4 rounded border border-black" id="mail" type="text"
+                        name="register-mail" value="<?php echo getOld("register-mail");?>">
+                    <p><?php echo getErrors("register-mail"); ?></p>
+
+                    <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="password">Mot de
+                        passe</label>
+                    <input class="mb-2 w-64 h-12 p-4 rounded border border-black" id="password" type="password"
+                        name="password" value="<?php echo getOld("password");?>">
+                    <p><?php echo getErrors("password"); ?></p>
+
+                    <label class="mb-2 xl:text-base lg:text-base md:text-sm sm:text-sm" for="passwordConfirm">Confirmer
+                        le
+                        mot de passe</label>
+                    <input class="mb-12 w-64 h-12 p-4 rounded border border-black" id="passwordConfirm" type="password"
+                        name="passwordConfirm" value="<?php echo getOld("passwordConfirm");?>">
+                    <p><?php echo getErrors("passwordConfirm"); ?></p>
+                </div>
+                <button class="w-64 h-12 rounded border border-black" type="submit">Envoyer</button>
+            </form>
+        </div>
     </div>
 </main>
-
-<footer>
-    <p>Created by Quentin, Colin, Guerlain, TomB at EDEN School</p>
-</footer>
-
-<?php 
-$content = ob_end_clean();
-
+<?php
+$content = ob_get_clean();
+unset($_SESSION["errors"]);
+unset($_SESSION["old"]);
 require VIEWS . '/template.php';

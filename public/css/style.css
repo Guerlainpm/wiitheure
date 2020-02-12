@@ -2,4 +2,15 @@
 
 @tailwind components;
 
+
 @tailwind utilities;
+.hide{
+  display: none;
+}
+.show{
+  display: flex;
+}
+
+.outline-none{
+  outline: 0 !important;
+}
