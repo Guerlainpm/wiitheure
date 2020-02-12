@@ -53,11 +53,20 @@ class Router {
             }
 
             elseif ($this->url == "/post/sub") {
-                echo json_encode($wiitController->getAllSubPost());
+                if (isset($_SESSION["user"])) {
+                    echo json_encode($wiitController->getAllSubPost());
+                }
             }
 
+            elseif ($this->url == "/post/new") {
+                echo json_encode($wiitController->getNewPost());
+            }
+
+            elseif ($this->url == "/user/subs") {
+                echo json_encode($wiitController->getAllSub());
+            } 
+
             elseif ($this->url == "/connected") {
-                //echo json_encode(($wiitController->getAllSubPost()));
                 if (isset($_SESSION["user"])) {
                     echo json_encode(true);
                 } else {

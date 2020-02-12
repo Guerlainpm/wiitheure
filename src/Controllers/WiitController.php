@@ -35,10 +35,9 @@ class WiitController extends Controller {
     }
 
     public function getAllSub() {
-      if (isset($_SESSION["user"])) {
-        return $this->manager('UserManager', "user")->getAllSub();
-      } else {
-        return [];
-      }
+      return $this->manager('UserManager', "user")->getAllSub();
+    }
+    public function getNewPost() {
+      return $this->manager('WittManager', "post")->getNewPost();
     }
 }
