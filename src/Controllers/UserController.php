@@ -68,6 +68,11 @@ class UserController extends Controller {
         }
         $this->redirect("/");
     }
+    public function follow($followed) {
+        if (isset($_SESSION["user"])) {
+            $this->manager("UserManager", "user")->follow($followed);
+        }
+    }
 
     public function update()
     {
