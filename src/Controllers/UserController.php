@@ -85,8 +85,7 @@ class UserController extends Controller {
 
           $user = $this->manager('UserManager', 'user')->find(['id'=>$_SESSION['user']->getId()], "\\App\\Models\\User")[0];
           $_SESSION['user'] = $user;
-          $this->redirect("/profile".'/'.$_SESSION['user']->getId());
       }
+      $this->redirect("/profile".'/'.$_SESSION['user']->getId());
     }
-
 }
