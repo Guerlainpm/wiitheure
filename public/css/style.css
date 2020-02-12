@@ -2,6 +2,20 @@
 
 @tailwind components;
 
+.hide{
+  display: none;
+}
+.show{
+  display: flex;
+}
+
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mb-18 {
+  margin-bottom: 4.5rem;
+}
+
+
 @tailwind utilities;
-
-
