@@ -10,8 +10,8 @@ module.exports = {
         "light_2": "#63a4ff",
         "dark_2": "#004ba0",
         "grey": "#eeeeee",
-
-        "footer": "#24253C"
+        "footer": "#24253C",
+        "trdark": "#00000044"
       }
     }
   },
