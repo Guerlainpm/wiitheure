@@ -10,11 +10,16 @@ class UserController extends Controller {
 
     public function profilePage() {
       if (isset($_SESSION['user'])) {
-        $this->views('Auth/profile.php');
+        $this->views('Auth/profile.php', ["sub" => $this->getAllSub()]);
       }else {
         $this->redirect('/');
       }
     }
+
+    public function getAllSub() {
+      return $this->manager('UserManager', "user")->getAllSub();
+    }
+
     //post VV
     public function register() {
       $_SESSION['old'] = $_POST;

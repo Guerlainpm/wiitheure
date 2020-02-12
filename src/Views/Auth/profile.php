@@ -8,17 +8,23 @@
       <h2 class="text-3xl text-light"><?php echo $_SESSION["user"]->getUsername(); ?></h2>
       <div class="p-4 flex flex-grow flex-col justify-between">
         <div class="flex flex-col flex-grow py-4 items-center">
-          <a href="/"><button class="w-48 text-blue-500 bg-white border-2 border-blue-600 rounded-lg uppercase py-2 px-4 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit" name="button">Your Wiits</button></a>
-          <div class="mt-12 flex flex-col flex-grow py-4 w-full">
-            <h3 class="mb-2 text-xl text-light border-b-2 border-dark">Your folows</h3>
+          <a href="/"><button class="w-48 text-blue-500 bg-white border-2 border-blue-600 rounded-lg uppercase py-2 px-4 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit" name="button">Vos Wiits</button></a>
+          <div class="mt-4 flex flex-col flex-grow py-4 w-full">
+            <h3 class="mb-2 text-xl text-light border-b-2 border-dark">Vos abonnements</h3>
             <div class="h-64 overflow-auto">
               <ul class="list-disc ml-8">
-                
+                <?php
+                  foreach ($data["sub"] as $key => $sub) {
+                    ?>
+                      <li><?php echo $sub->getUsername(); ?></li>
+                    <?php
+                  }
+                 ?>
               </ul>
             </div>
           </div>
         </div>
-        <p>Created at : <?php echo $_SESSION['user']->getCreate_at(); ?></p>
+        <p>Créé le : <?php echo $_SESSION['user']->getCreate_at(); ?></p>
       </div>
     </div>
   </div>
@@ -27,7 +33,7 @@
 <!-- here start the form area -->
   <div class="p-8 w-2/3 flex flex-col justify-around">
     <div id="name-<?php echo $_SESSION["user"]->getId();?>" class="">
-      <p class="text-light border-b-2 border-dark">Username</p>
+      <p class="text-light border-b-2 border-dark">Pseudo</p>
       <p class="ml-4 pt-2"><?php echo $_SESSION["user"]->getUsername(); ?></p>
     </div>
 
@@ -45,7 +51,7 @@
 <!-- form -->
     <form class="hidden flex-col flex-grow justify-around" id="update-<?php echo $_SESSION["user"]->getId();?>" action="/profile/<?php echo $_SESSION['user']->getId(); ?>/edit" method="post">
         <div class="flex flex-col">
-          <label class="text-light border-b-2 border-dark" for="username">Username</label>
+          <label class="text-light border-b-2 border-dark" for="username">Pseudo</label>
           <input class="outline-none mt-2 rounded-lg p-4" type="text" name="username" value="<?php echo $_SESSION["user"]->getUsername();?>" placeholder="Username">
           <p><?php echo getErrors('username'); ?></p>
         </div>
