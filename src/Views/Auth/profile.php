@@ -13,26 +13,7 @@
             <h3 class="mb-2 text-xl text-light border-b-2 border-dark">Your folows</h3>
             <div class="h-64 overflow-auto">
               <ul class="list-disc ml-8">
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-                <li>exemple</li>
-
+                
               </ul>
             </div>
           </div>
