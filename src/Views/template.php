@@ -8,6 +8,7 @@
       <meta name="viewport" content="width=device-width, user-scalable=no">
       <link rel="stylesheet" href="/css/tailwind.css">
       <link rel="stylesheet" href="/css/style.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
       <title></title>
     </head>
     <body class="flex flex-col justify-between min-h-screen bg-grey">
