@@ -39,16 +39,14 @@ class UserManager extends \App\Models\Manager {
             ]);
         }
     }
-    public function getAllSub(bool $classu = false) {
+    public function getAllSub() {
         if (isset($_SESSION["user"])) {
             $req = $this->pdo->prepare(
                 "SELECT user.id, username, password, bio, mail, user.create_at FROM follow
                 INNER JOIN user ON followed = user.id
                 WHERE follow.user_id = :user_id
             ");
-            if ($classu) {
                 $req->setFetchMode(\PDO::FETCH_CLASS, "\\App\\Models\\User");
-            }
                 $req->execute([
                     "user_id" => $_SESSION["user"]->getId(),
                 ]);
