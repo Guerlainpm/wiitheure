@@ -1,8 +1,16 @@
 <?php
+<<<<<<< HEAD
+namespace \App\Models;
+  /**
+   *
+   */
+  class Wiit
+=======
 
 namespace App\Models;
 
 class Wiit
+>>>>>>> fee7b5209c4628bc8d93774ef7a72fba3e261be8
   {
     private $content;
     private $create_at;
