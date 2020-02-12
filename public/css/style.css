@@ -2,6 +2,8 @@
 
 @tailwind components;
 
+
+@tailwind utilities;
 .hide{
   display: none;
 }
@@ -9,4 +11,19 @@
   display: flex;
 }
 
+<<<<<<< HEAD
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mb-18 {
+  margin-bottom: 4.5rem;
+}
+
+
 @tailwind utilities;
+=======
+.outline-none{
+  outline: 0 !important;
+}
+>>>>>>> fee7b5209c4628bc8d93774ef7a72fba3e261be8
