@@ -4,8 +4,16 @@ namespace App\Controllers;
 
 class UserController extends Controller {
 
-    public function showRegisterAndLogin() {
-        $this->views('Auth/authentification.php', []);
+    public function authPage() {
+        $this->views('Auth/authentification.php');
+    }
+
+    public function profilePage() {
+      if (isset($_SESSION['user'])) {
+        $this->views('Auth/profile.php');
+      }else {
+        $this->redirect('/');
+      }
     }
     //post VV
     public function register() {
@@ -61,4 +69,23 @@ class UserController extends Controller {
         $this->redirect("/");
     }
 
+    public function update()
+    {
+      $this->validator->validate([
+          "username" => ["required","min:2"],
+          "mail" => ["required","email"]
+      ]);
+
+      if(!$this->validator->hasErrors()) {
+          $this->manager('UserManager', 'user')->update([
+            'username'=>$_POST["username"],
+            'mail'=>$_POST["mail"],
+            'bio'=>$_POST["bio"]],
+            ['id'=>$_SESSION["user"]->getId()]);
+
+          $user = $this->manager('UserManager', 'user')->find(['id'=>$_SESSION['user']->getId()], "\\App\\Models\\User")[0];
+          $_SESSION['user'] = $user;
+      }
+      $this->redirect("/profile".'/'.$_SESSION['user']->getId());
+    }
 }
