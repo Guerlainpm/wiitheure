@@ -38,19 +38,32 @@ class UserManager extends \App\Models\Manager {
             ]);
         }
     }
-    public function getAllSubPost() {
+    public function getAllSub() {
         if (isset($_SESSION["user"])) {
-            /*$user = $this->find([
-                "id" => $_SESSION["user"]->getId(),
-                "mail" => htmlspecialchars($mail, ENT_QUOTES),
-            ], "\\App\\Models\\User");*/
-        }
-        /*if ($user_id != $_SESSION["user"]->getId()) {
-            $req = $this->pdo->prepare("INSERT INTO follow (user_id, followed) VALUES (:user_id, :followed);");
+            $req = $this->pdo->prepare(
+                "SELECT user.id, username, password, bio, mail, user.create_at FROM follow
+                INNER JOIN user ON followed = user.id
+                WHERE follow.user_id = :user_id
+            ");
+            $req->setFetchMode(\PDO::FETCH_CLASS, "\\App\\Models\\User");
             $req->execute([
                 "user_id" => $_SESSION["user"]->getId(),
-                "followed" => $followed
             ]);
-        }*/
+            return $req->fetchAll();
+        }
+    }
+    public function getAllSubNum($id) {
+        if (isset($_SESSION["user"])) {
+            $req = $this->pdo->prepare(
+                "SELECT COUNT(*) FROM follow
+                INNER JOIN user ON follow.followed = user.id
+                WHERE follow.followed = :user_id
+            ");
+            $req->setFetchMode(\PDO::FETCH_CLASS, "\\App\\Models\\User");
+            $req->execute([
+                "user_id" => $id,
+            ]);
+            return $req->fetch();
+        }
     }
 }

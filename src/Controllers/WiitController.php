@@ -4,7 +4,7 @@ namespace App\Controllers;
 class WiitController extends Controller {
 
     public function index() {
-        $this->views('Wiit/index.php', ["posts" => $this->getAllSubPost(), "sub" => $this->getSub()]);
+        $this->views('Wiit/index.php', ["posts" => $this->getAllSubPost(), "sub" => $this->getAllSub()]);
 
     }
 
@@ -34,9 +34,9 @@ class WiitController extends Controller {
       }
     }
 
-    public function getSub() {
+    public function getAllSub() {
       if (isset($_SESSION["user"])) {
-        return $this->manager('UserManager', "user")->getAllSubPost();
+        return $this->manager('UserManager', "user")->getAllSub();
       } else {
         return [];
       }

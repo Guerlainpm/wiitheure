@@ -31,7 +31,7 @@ class WittManager extends Manager {
       ]
     ]);
   }
-  public function getAllSubPost() {
+  public function getAllSubPostClass() {
     $req = $this->pdo->prepare(
       "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
       INNER JOIN post ON post.user_id = follow.followed
@@ -58,6 +58,20 @@ class WittManager extends Manager {
       $user = $req->fetch();
       array_push($posts, ["post" => $post, "user" => $user]);
     }
+    return $posts;
+  }
+  public function getAllSubPost() {
+    $req = $this->pdo->prepare(
+      "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
+      INNER JOIN post ON post.user_id = follow.followed
+      INNER JOIN user ON user.id = follow.followed
+      WHERE follow.user_id = :user_id
+      ORDER BY post.create_at ASC
+    ");
+    $req->execute([
+      "user_id" => $_SESSION["user"]->getId()
+    ]);
+    $postsNotObj = $req->fetchAll();
     return $posts;
   }
 }

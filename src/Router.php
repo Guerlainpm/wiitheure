@@ -19,7 +19,10 @@ class Router {
         if ($this->method == "GET") {
 
             if ($this->url == "/") {
+                //var_dump($wiitController->getAllSubPost()["post"]);
+                
                 $wiitController->index();
+                //var_dump($wiitController->getAllSubPost()[1]);
             }
 
             elseif ($this->url == "/authentification") {
@@ -47,6 +50,19 @@ class Router {
 
             elseif ($this->url == "/create/wiit") {
                 $wiitController->create();
+            }
+
+            elseif ($this->url == "/post/sub") {
+                echo json_encode($wiitController->getAllSubPost());
+            }
+
+            elseif ($this->url == "/connected") {
+                //echo json_encode(($wiitController->getAllSubPost()));
+                if (isset($_SESSION["user"])) {
+                    echo json_encode(true);
+                } else {
+                    echo json_encode(false);
+                }
             }
 
         }
