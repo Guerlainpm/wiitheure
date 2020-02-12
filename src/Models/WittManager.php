@@ -84,4 +84,10 @@ class WittManager extends Manager {
     $posts = $req->fetchAll();
     return $posts;
   }
+    public function deleteWiit()
+    {
+      $this->delete([
+        "id" => $_SESSION["user"]->getId()
+      ]);
+  }
 }

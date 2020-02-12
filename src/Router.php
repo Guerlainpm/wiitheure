@@ -26,13 +26,17 @@ class Router {
             }
 
             elseif ($this->url == "/authentification") {
-                $userController->showRegisterAndLogin();
+                $userController->authPage();
+            }
+
+            elseif (preg_match('#^\/profile\/([0-9]+)$#', $this->url, $matches)) {
+                $userController->profilePage($matches[1]);
             }
         }
 
         elseif ($this->method == "POST") {
 
-            if (preg_match('#^\/profil\/([0-9]+)$#',$this->url,$match)) {
+            if (preg_match('#^\/profile\/([0-9]+)$#',$this->url,$matches)) {
                 $wiitController->show($match[1]);
             }
 
@@ -72,6 +76,13 @@ class Router {
                 } else {
                     echo json_encode(false);
                 }
+            }
+            elseif ($this->url == "/delete/wiit") {
+                $wiitController->delete();
+            }
+
+            elseif (preg_match('#^\/profile\/([0-9]+)\/edit$#',$this->url,$matches)) {
+                $userController->update();
             }
 
         }

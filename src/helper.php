@@ -1,6 +1,6 @@
 <?php
 
-  function getError($a) {
+  function getErrors($a) {
     return isset($_SESSION["errors"][$a]) ? $_SESSION["errors"][$a] : "" ;
   }
 

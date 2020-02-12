@@ -40,4 +40,12 @@ class WiitController extends Controller {
     public function getNewPost() {
       return $this->manager('WittManager', "post")->getNewPost();
     }
+    public function delete()
+    {
+      if (isset($_SESSION["user"])) {
+        $this->manager('WiitManager')->deleteWiit();
+      }
+
+    }
+
 }

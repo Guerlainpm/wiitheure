@@ -11,13 +11,23 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
       <title></title>
     </head>
-    <body>
+    <body class="flex flex-col justify-between min-h-screen bg-grey">
       <nav>
-      <?php
-        include VIEWS . "components/navbar.php";
+        <?php
+          include VIEWS . "components/navbar.php";
         ?>
       </nav>
+      <main class="flex-grow container mx-auto flex flex-col">
         <?php echo $content; ?>
+      </main>
+
+      <footer class="w-full bg-footer text-white py-2">
+        <div class="container mx-auto">
+          <?php
+            include VIEWS . "components/footer.php";
+          ?>
+        </div>
+      </footer>
     </body>
     </html>
   <?php
