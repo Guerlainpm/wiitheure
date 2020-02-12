@@ -7,7 +7,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, user-scalable=no">
       <link rel="stylesheet" href="/css/tailwind.css">
-      <link rel="stylesheet" href="/css/style.css">
       <title></title>
     </head>
     <body class="flex flex-col justify-between min-h-screen bg-grey">

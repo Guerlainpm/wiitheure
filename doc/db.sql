@@ -39,7 +39,9 @@ CREATE TABLE comment (
 CREATE TABLE follow (
     id int UNIQUE NOT NULL AUTO_INCREMENT,
     user_id int NOT NULL,
+    followed int NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (followed) REFERENCES user(id),
     PRIMARY KEY(id)
 );
 
