@@ -28,7 +28,7 @@ class WiitController extends Controller {
       return $commentsAndUser;
     }
     public function getOnePost($id) {
-      return $todo = $this->manager('WittManager', "post")->find([
+      return $todo = $this->manager('WiitManager', "post")->find([
         "id" => $id
       ], "\\App\\Models\\Wiit")[0];
     }
