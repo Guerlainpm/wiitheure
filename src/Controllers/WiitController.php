@@ -22,7 +22,7 @@ class WiitController extends Controller {
           "citation" => []
         ]);
         if (!$this->validator->hasErrors()) {
-          $todo = $this->manager('WittManager', "post")->newPost(
+          $todo = $this->manager('WiitManager', "post")->newPost(
             $_POST["content"],
             $_SESSION["user"]->getId()
           );
@@ -34,7 +34,7 @@ class WiitController extends Controller {
     }
     public function getAllSubPost() {
       if (isset($_SESSION["user"])) {
-        return $this->manager('WittManager', "post")->getAllSubPostClass();
+        return $this->manager('WiitManager', "post")->getAllSubPostClass();
       } else {
         return [];
       }
