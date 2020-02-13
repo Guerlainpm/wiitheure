@@ -19,6 +19,18 @@
   margin-bottom: 4.5rem;
 }
 
+.pl-13 {
+  padding-left: 3.5rem;
+}
+
+.pr-13 {
+  padding-right: 3.5rem;
+}
+
 .outline-none{
   outline: 0 !important;
 }
+
+@tailwind utilities;
+
+
