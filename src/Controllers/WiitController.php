@@ -10,6 +10,10 @@ class WiitController extends Controller {
     public function indexNews() {
       $this->views('Wiit/index.php', ["posts" => $this->getNewPost(), "sub" => $this->getAllSub()]);
     }
+    public function show() {
+      $this->views('Wiit/show.php', ["post" => $this->getNewPost(), "sub" => $this->getAllSub()]);
+    }
+    public function getOnePost() {}
     public function create()
     {
       if (isset($_SESSION["user"])) {
