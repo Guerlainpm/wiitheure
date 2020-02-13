@@ -1,4 +1,4 @@
-let co = false;
+/*let co = false;
 function connected() {
     axios.post('/connected', {})
     .then(function (response) {
@@ -93,5 +93,4 @@ document.getElementById("sub").addEventListener("click", function () {
 
 connected();
 
-getSub();
-//getNewPost();
+getSub();*/

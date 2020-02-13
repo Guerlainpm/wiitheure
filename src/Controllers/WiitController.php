@@ -7,7 +7,13 @@ class WiitController extends Controller {
         $this->views('Wiit/index.php', ["posts" => $this->getAllSubPost(), "sub" => $this->getAllSub()]);
 
     }
-
+    public function indexNews() {
+      $this->views('Wiit/index.php', ["posts" => $this->getNewPost(), "sub" => $this->getAllSub()]);
+    }
+    public function show() {
+      $this->views('Wiit/show.php', ["post" => $this->getNewPost(), "sub" => $this->getAllSub()]);
+    }
+    public function getOnePost() {}
     public function create()
     {
       if (isset($_SESSION["user"])) {
@@ -16,7 +22,7 @@ class WiitController extends Controller {
           "citation" => []
         ]);
         if (!$this->validator->hasErrors()) {
-          $todo = $this->manager('WiitManager', "post")->create(
+          $todo = $this->manager('WittManager', "post")->newPost(
             $_POST["content"],
             $_SESSION["user"]->getId()
           );
@@ -28,7 +34,7 @@ class WiitController extends Controller {
     }
     public function getAllSubPost() {
       if (isset($_SESSION["user"])) {
-        return $this->manager('WiitManager', "post")->getAllSubPost();
+        return $this->manager('WittManager', "post")->getAllSubPostClass();
       } else {
         return [];
       }
@@ -46,5 +52,4 @@ class WiitController extends Controller {
         $this->manager('WiitManager')->deleteWiit();
       }
     }
-
 }
