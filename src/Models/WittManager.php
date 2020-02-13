@@ -57,9 +57,11 @@ class WittManager extends Manager {
       ]);
       $user = $req->fetch();
       array_push($posts, ["post" => $post, "user" => $user]);
+      return $posts;
     }
     return $posts;
   }
+  
   public function getAllSubPost() {
     $req = $this->pdo->prepare(
       "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
@@ -69,19 +71,35 @@ class WittManager extends Manager {
       ORDER BY post.create_at DESC
     ");
     $req->execute([
-      "user_id" => $_SESSION["user"]->getId()
+      "user_id" => 1
     ]);
     $posts = $req->fetchAll();
     return $posts;
   }
   public function getNewPost() {
     $req = $this->pdo->prepare(
-      "SELECT user.id, post.id, citation, post.create_at, username, content FROM post
+      "SELECT user.id as user_id, post.id, citation, post.create_at, username, content FROM post
       INNER JOIN user ON post.user_id = user.id
       ORDER BY post.create_at DESC
     ");
     $req->execute();
-    $posts = $req->fetchAll();
+    $postsNotObj = $req->fetchAll();
+    $posts = [];
+    foreach ($postsNotObj as $key => $postNotObj) {
+      foreach ($postNotObj as $postKey => $value) {
+        $value = htmlspecialchars($value);
+      }
+      $post = new \App\Models\Wiit();
+      $post->constructor($postNotObj["content"], $postNotObj["create_at"], $postNotObj["citation"], $postNotObj["id"], $postNotObj["user_id"]);
+      $req = $this->pdo->prepare("SELECT * FROM user WHERE id=:id;");
+      $req->setFetchMode(\PDO::FETCH_CLASS, "\\App\\Models\\User");
+      $req->execute([
+        "id" => $postNotObj["user_id"]
+      ]);
+      $user = $req->fetch();
+      array_push($posts, ["post" => $post, "user" => $user]);
+    }
+    return $posts;
     return $posts;
   }
     public function deleteWiit()
