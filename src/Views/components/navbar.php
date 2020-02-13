@@ -1,9 +1,9 @@
 <?php
 ob_start();
 ?>
-<div class="text-white bg-primary p-2 md:flex md:items-center md:justify-between md:px-40">
+<div class="text-white bg-primary p-2 md:flex md:items-center md:justify-between lg:px-24 md:px-16">
   <div class="container mx-auto flex justify-between items-center">
-    <a href="/" class="w-24 rounded-full bg-white h-full">
+    <a href="/" class="w-24 lg:w-20 rounded-full bg-white h-full">
       <img src="/logo.png" alt="logo">
     </a>
       <input class="text-dark border-2 border-grey rounded-full outline-none py-2 px-4 w-1/3" type="search" placeholder="Search" name="search">
