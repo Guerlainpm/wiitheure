@@ -21,7 +21,11 @@ class Router {
         if ($this->method == "GET") {
 
             if ($this->url == "/") {
-                $wiitController->index();
+                if (isset($_SESSION["user"])) {
+                    $wiitController->index();
+                } else {
+                    header("Location: /authentification");
+                }
             }
 
             elseif ($this->url == "/news") {
