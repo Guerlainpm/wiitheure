@@ -1,9 +1,8 @@
 <?php
    ob_start();
-   $posts = $data["posts"];
+   $post = $data["post"];
    $subs = $data["sub"];
 ?>
-  <p>Accueil</p>
 <?php include VIEWS."/components/popup.php"; ?>
 <main class="container mx-auto flex flex-wrap">
     <div class="md:w-1/6">
