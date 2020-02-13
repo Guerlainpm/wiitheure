@@ -10,7 +10,7 @@
         <div class="mt-4 flex flex-wrap w-full md:flex flex-col">
             <a class='text-lg text-blue-500 md:w-full md:border-b md:border-b border-r md:border-r-0 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white       ' href="/"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-home"></i> <div class="font-bold hidden md:flex">Acceuil</div> </button></a>
             <a class="text-lg text-blue-500 md:w-full md:border-b md:border-b border-r md:border-r-0 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white       " href="/profile/<?php echo $_SESSION['user']->getId(); ?>"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-user"></i> <div class="font-bold hidden md:flex">Account</div></button> </a>
-            <a class="text-lg text-blue-500 md:w-full md:border-b md:border-b border-r md:border-r-0 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white       " href="/profile/news"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-hashtag"></i><div class="font-bold hidden md:flex">News</div></button> </a>
+            <a class="text-lg text-blue-500 md:w-full md:border-b md:border-b border-r md:border-r-0 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white       " href="/news"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-hashtag"></i><div class="font-bold hidden md:flex">News</div></button> </a>
             <div class="text-lg text-blue-500 md:w-full md:border-b border-r md:border-r-0 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white     "><button class="px-4 w-full flex justify-between items-center" id="create" ><i class="fas fa-plus-circle"></i><div class="font-bold hidden md:flex"> Wiiter</div></button></div>
         </div>
     </div>
@@ -33,11 +33,15 @@
                             <?php
                         }
                         ?>
-                                <div class="w-full">
-                                    <p><a href="/user/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
+                                <div class="w-full flex justify-between">
+                                    <p><a href="/profile/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
+                                    <form action="/follow" method="post">
+                                        <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                                        <button type="submit">follow</button>
+                                    </form>
                                 </div>
                                 <div class="w-full">
-                                    <p><?php echo $post["post"]->getContent(); ?></p>
+                                    <p><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></a></p>
                                 </div>
                                 <div class="w-full">
                                     <p><?php echo $post["post"]->getCreateAt(); ?></p>
@@ -62,10 +66,17 @@
  
                 <ul>
                     <?php
-                        foreach ($subs as $key => $value) {
-                            ?>
-                                <li class="flex justify-between w-full"><p><?php echo $value->getUsername(); ?></p> <button>unsub</button></li>
-                            <?php
+                        if (isset($_SESSION["user"])) {
+                            foreach ($subs as $key => $value) {
+                                ?>
+                                    <li class="flex justify-between w-full"><p><?php echo $value->getUsername(); ?></p>
+                                        <form action="/unfollow" method="post">
+                                            <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                                            <button type="submit">unfollow</button>
+                                        </form>
+                                    </li>
+                                <?php
+                            }
                         }
                     ?>
                 </ul>

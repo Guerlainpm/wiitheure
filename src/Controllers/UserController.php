@@ -8,7 +8,7 @@ class UserController extends Controller {
         $this->views('Auth/authentification.php');
     }
 
-    public function profilePage() {
+    public function profilePage($id) {
       if (isset($_SESSION['user'])) {
         $this->views('Auth/profile.php', ["sub" => $this->getAllSub(), "wiit"=>$this->getWiitsByID($_SESSION['user']->getId())]);
       }else {
@@ -16,6 +16,18 @@ class UserController extends Controller {
       }
     }
 
+    public function follow() {
+        if (isset($_SESSION["user"])) {
+            $this->manager("UserManager", "user")->follow($_POST["followed"]);
+        }
+        $this->redirect("/");
+    }
+    public function unfollow() {
+        if (isset($_SESSION["user"])) {
+            $this->manager("UserManager", "user")->unfollow($_POST["followed"]);
+        }
+        $this->redirect("/");
+    }
     public function getWiitsByID($user_id)
     {
       $wiit = $this->manager('WiitManager', 'post')->find([
@@ -80,11 +92,6 @@ class UserController extends Controller {
             unset($_SESSION["user"]);
         }
         $this->redirect("/");
-    }
-    public function follow($followed) {
-        if (isset($_SESSION["user"])) {
-            $this->manager("UserManager", "user")->follow($followed);
-        }
     }
 
     public function update()

@@ -10,10 +10,28 @@ class WiitController extends Controller {
     public function indexNews() {
       $this->views('Wiit/index.php', ["posts" => $this->getNewPost(), "sub" => $this->getAllSub()]);
     }
-    public function show() {
-      $this->views('Wiit/show.php', ["post" => $this->getNewPost(), "sub" => $this->getAllSub()]);
+    public function show($pos_id) {
+      $this->views('Wiit/show.php', ["post" => [
+        "post" => $this->getOnePost($pos_id),
+        "user" => $this->getOneUser($this->getOnePost($pos_id)->getUserId())],
+        "comments" => $this->getComment($pos_id),
+        "sub" => $this->getAllSub()
+      ]);
     }
-    public function getOnePost() {}
+    public function getComment($post_id) {
+      $commentsAndUser = [];
+      $comments = $this->manager('CommentManager', "comment")->getAllComments($post_id);
+      foreach ($comments as $key => $comment) {
+        $user = $this->manager('UserManager', "user")->find(["id" => $comment->getUser_id()], "\\App\\Models\\User")[0];
+        array_push($commentsAndUser, ["comment" =>$comment, "user" => $user]);
+      }
+      return $commentsAndUser;
+    }
+    public function getOnePost($id) {
+      return $todo = $this->manager('WittManager', "post")->find([
+        "id" => $id
+      ], "\\App\\Models\\Wiit")[0];
+    }
     public function create()
     {
       if (isset($_SESSION["user"])) {
@@ -39,7 +57,11 @@ class WiitController extends Controller {
         return [];
       }
     }
-
+    public function getOneUser($id) {
+      return $this->manager('UserManager', "user")->find([
+        "id" => $id
+      ], "\\App\\Models\\User")[0];
+    }
     public function getAllSub() {
       return $this->manager('UserManager', "user")->getAllSub();
     }

@@ -100,7 +100,6 @@ class WiitManager extends Manager {
       array_push($posts, ["post" => $post, "user" => $user]);
     }
     return $posts;
-    return $posts;
   }
     public function deleteWiit()
     {
