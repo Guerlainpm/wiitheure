@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class WittManager extends Manager {
+class WiitManager extends Manager {
   public function newPost($content, $user_id) {
     $this->insert([
       "content" => htmlspecialchars($content),
