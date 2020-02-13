@@ -57,11 +57,9 @@ class WiitManager extends Manager {
       ]);
       $user = $req->fetch();
       array_push($posts, ["post" => $post, "user" => $user]);
-      return $posts;
     }
     return $posts;
   }
-
   public function getAllSubPost() {
     $req = $this->pdo->prepare(
       "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
@@ -71,7 +69,7 @@ class WiitManager extends Manager {
       ORDER BY post.create_at DESC
     ");
     $req->execute([
-      "user_id" => 1
+      "user_id" => $_SESSION["user"]->getId()
     ]);
     $posts = $req->fetchAll();
     return $posts;
