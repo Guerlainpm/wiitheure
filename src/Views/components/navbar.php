@@ -6,7 +6,6 @@ ob_start();
     <a href="/" class="w-20 md:w-24 lg:w-20 rounded-full bg-white h-full">
       <img src="/logo.png" alt="logo">
     </a>
-      <input class="text-dark border-2 border-grey rounded-full outline-none py-2 px-4 w-1/3" type="search" placeholder="Search" name="search">
       <?php
         if (isset($_SESSION["user"])) {
           ?>
