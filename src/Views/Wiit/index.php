@@ -7,7 +7,7 @@
 <main class="container mx-auto flex flex-wrap">
     <div class="md:w-1/6">
         <div class="mt-4 flex flex-wrap w-full">
-            <button class="p-2 border-t border-l border-grey w-full bg-primary_2">acceuil</button>
+            <button class="p-2 border-t border-l border-grey w-full bg-primary_2"><a href="/">acceuil</a></button>
             <button class="p-2 w-full border-t bg-primary_2 border-l border-grey">lorem</button>
             <button class="p-2 w-full border-t bg-primary_2 border-l border-grey">ipsum</button>
             <button id="create" class="p-2 w-full border-t bg-primary_2 border-l border-grey">create a wiit</button>

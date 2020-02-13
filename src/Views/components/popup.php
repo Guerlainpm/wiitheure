@@ -10,7 +10,7 @@ ob_start();
             </div>
             <div class="w-full px-2">
                 <form id="popupForm" action="/create/wiit" method="post">
-                    <input type="submit" value="sub"/>
+                    
                 </form>
             </div>
             <div id="footer">

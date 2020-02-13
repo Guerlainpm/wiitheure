@@ -57,12 +57,6 @@ class Router {
                 $wiitController->create();
             }
 
-            elseif ($this->url == "/post/sub") {
-                if (isset($_SESSION["user"])) {
-                    echo json_encode($wiitController->getAllSubPost());
-                }
-            }
-
             elseif ($this->url == "/post/new") {
                 echo json_encode($wiitController->getNewPost());
             }
@@ -71,13 +65,6 @@ class Router {
                 echo json_encode($wiitController->getAllSub());
             } 
 
-            elseif ($this->url == "/connected") {
-                if (isset($_SESSION["user"])) {
-                    echo json_encode(true);
-                } else {
-                    echo json_encode(false);
-                }
-            }
             elseif ($this->url == "/delete/wiit") {
                 $wiitController->delete();
             }
