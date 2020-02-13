@@ -2,6 +2,7 @@
 namespace App;
 use App\Controllers\UserController;
 use App\Controllers\WiitController;
+use App\Controllers\CommentController;
 
 class Router {
     private $method;
@@ -15,6 +16,7 @@ class Router {
     public function run() {
         $userController = new UserController();
         $wiitController = new WiitController();
+        $commentController = new CommentController();
 
         if ($this->method == "GET") {
 
@@ -41,9 +43,14 @@ class Router {
         elseif ($this->method == "POST") {
 
             if (preg_match('#^\/profile\/([0-9]+)$#',$this->url,$matches)) {
-                $wiitController->show($match[1]);
+                $wiitController->show($matches[1]);
             }
-
+            elseif (preg_match('#^\/comment\/create\/([0-9]+)$#', $this->url, $matches)) {
+                $commentController->createComment($matches[1]);
+            }
+            elseif (preg_match('#^\/comment\/rep\/create\/([0-9]+)$#', $this->url, $matches)) {
+                $commentController->createCommentRep($matches[1]);
+            }
             elseif ($this->url == "/login") {
                 $userController->login();
             }
@@ -79,5 +86,13 @@ class Router {
         }
 
 
+    }
+
+    /**
+     * Get the value of url
+     */ 
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

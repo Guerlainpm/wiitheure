@@ -3,7 +3,7 @@
    $post = $data["post"]["post"];
    $userPost = $data["post"]["user"];
    $subs = $data["sub"];
-   //var_dump($userPost);
+   $comments = $data["comments"];
 ?>
 <?php include VIEWS."/components/popup.php"; ?>
 <main class="container mx-auto flex flex-wrap">
@@ -31,10 +31,42 @@
                 </div>
             </div>
             <div>
-                <form action="/comment/create/<?php echo $post->getId(); ?>" post="/">
-                    <input />
+                <form action="/comment/create/<?php echo $post->getId(); ?>" method="POST">
+                    <?php global $router; ?>
+                    <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>" />
+                    <input name="content"/>
                     <input type="submit" value="submit"/>
                 </form>
+                <ul>
+                <?php
+                    foreach ($comments as $key => $value) {
+                        if ($value["comment"]->getComment_id() == null) {
+                            ?>
+                                <li>
+                                    <p><a href="/profile/<?php echo $value["user"]->getId(); ?>"><?php echo $value["user"]->getUsername(); ?></a>: <?php echo $value["comment"]->getContent(); ?></p>
+                                    <form action="/comment/rep/create/<?php echo $post->getId(); ?>" method="POST">
+                                        <input type="hidden" name="comment_id" value="<?php echo $value["comment"]->getId(); ?>" />
+                                        <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>" />
+                                        <input name="content"/>
+                                        <input type="submit" value="submit"/>
+                                    </form>
+                                    <ul>
+                                    <?php
+                                        foreach ($comments as $repK => $reponse) {
+                                            if ($value["comment"]->getId() == $reponse["comment"]->getComment_id()) {
+                                                ?>
+                                                    <li class="pl-2"><a href="/profile/<?php echo $reponse["user"]->getId(); ?>"><?php echo $reponse["user"]->getUsername(); ?></a>: <?php echo $reponse["comment"]->getContent(); ?></li>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                    </ul>
+                                </li>
+                            <?php
+                        }
+                    }
+                ?>
+                </ul>
             </div>
         </div>
     </div>
