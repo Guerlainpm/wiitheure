@@ -51,6 +51,12 @@ class Router {
             elseif (preg_match('#^\/comment\/rep\/create\/([0-9]+)$#', $this->url, $matches)) {
                 $commentController->createCommentRep($matches[1]);
             }
+            elseif ($this->url == "/follow") {
+                $userController->follow();
+            }
+            elseif ($this->url == "/unfollow") {
+                $userController->unfollow();
+            }
             elseif ($this->url == "/login") {
                 $userController->login();
             }

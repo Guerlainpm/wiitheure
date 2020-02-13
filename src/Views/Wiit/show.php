@@ -10,8 +10,6 @@
     <div class="md:w-1/6">
         <div class="mt-4 flex flex-wrap w-full">
             <button class="p-2 border-t border-l border-grey w-full bg-primary_2"><a href="/">acceuil</a></button>
-            <button class="p-2 w-full border-t bg-primary_2 border-l border-grey">lorem</button>
-            <button class="p-2 w-full border-t bg-primary_2 border-l border-grey">ipsum</button>
             <button id="create" class="p-2 w-full border-t bg-primary_2 border-l border-grey">create a wiit</button>
         </div>
     </div>
@@ -55,7 +53,7 @@
                                         foreach ($comments as $repK => $reponse) {
                                             if ($value["comment"]->getId() == $reponse["comment"]->getComment_id()) {
                                                 ?>
-                                                    <li class="pl-2"><a href="/profile/<?php echo $reponse["user"]->getId(); ?>"><?php echo $reponse["user"]->getUsername(); ?></a>: <?php echo $reponse["comment"]->getContent(); ?></li>
+                                                    <li class="pl-4"><a href="/profile/<?php echo $reponse["user"]->getId(); ?>"><?php echo $reponse["user"]->getUsername(); ?></a>: <?php echo $reponse["comment"]->getContent(); ?></li>
                                                 <?php
                                             }
                                         }

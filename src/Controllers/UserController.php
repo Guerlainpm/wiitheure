@@ -15,6 +15,19 @@ class UserController extends Controller {
         $this->redirect('/');
       }
     }
+
+    public function follow() {
+        if (isset($_SESSION["user"])) {
+            $this->manager("UserManager", "user")->follow($_POST["followed"]);
+        }
+        $this->redirect("/");
+    }
+    public function unfollow() {
+        if (isset($_SESSION["user"])) {
+            $this->manager("UserManager", "user")->unfollow($_POST["followed"]);
+        }
+        $this->redirect("/");
+    }
     //post VV
     public function register() {
       $_SESSION['old'] = $_POST;
@@ -67,11 +80,6 @@ class UserController extends Controller {
             unset($_SESSION["user"]);
         }
         $this->redirect("/");
-    }
-    public function follow($followed) {
-        if (isset($_SESSION["user"])) {
-            $this->manager("UserManager", "user")->follow($followed);
-        }
     }
 
     public function update()

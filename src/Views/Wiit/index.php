@@ -35,11 +35,15 @@
                             <?php
                         }
                         ?>
-                                <div class="w-full">
+                                <div class="w-full flex justify-between">
                                     <p><a href="/profile/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
+                                    <form action="/follow" method="post">
+                                        <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                                        <button type="submit">follow</button>
+                                    </form>
                                 </div>
                                 <div class="w-full">
-                                    <p><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></p>
+                                    <p><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></a></p>
                                 </div>
                                 <div class="w-full">
                                     <p><?php echo $post["post"]->getCreateAt(); ?></p>
@@ -64,10 +68,17 @@
                 <p>sub</p>
                 <ul>
                     <?php
-                        foreach ($subs as $key => $value) {
-                            ?>
-                                <li class="flex justify-between w-full"><p><?php echo $value->getUsername(); ?></p> <button>unsub</button></li>
-                            <?php
+                        if (isset($_SESSION["user"])) {
+                            foreach ($subs as $key => $value) {
+                                ?>
+                                    <li class="flex justify-between w-full"><p><?php echo $value->getUsername(); ?></p>
+                                        <form action="/unfollow" method="post">
+                                            <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                                            <button type="submit">unfollow</button>
+                                        </form>
+                                    </li>
+                                <?php
+                            }
                         }
                     ?>
                 </ul>
