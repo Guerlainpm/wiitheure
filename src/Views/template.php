@@ -1,6 +1,4 @@
-<?php
 
-  ?>
     <!DOCTYPE html>
     <html lang="fr" dir="ltr">
     <head>
@@ -30,4 +28,3 @@
       </footer>
     </body>
     </html>
-  <?php
