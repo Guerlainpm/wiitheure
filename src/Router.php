@@ -38,6 +38,9 @@ class Router {
             elseif (preg_match('#^\/post\/([0-9]+)$#', $this->url, $matches)) {
                 $wiitController->show($matches[1]);
             }
+            elseif (preg_match('#^\/wiits\/([0-9]+)$#', $this->url, $matches)) {
+                $wiitController->wiitsPage($matches[1]);
+            }
         }
 
         elseif ($this->method == "POST") {
@@ -72,14 +75,6 @@ class Router {
             elseif ($this->url == "/create/wiit") {
                 $wiitController->create();
             }
-
-            elseif ($this->url == "/post/new") {
-                echo json_encode($wiitController->getNewPost());
-            }
-
-            elseif ($this->url == "/user/subs") {
-                echo json_encode($wiitController->getAllSub());
-            } 
 
             elseif ($this->url == "/delete/wiit") {
                 $wiitController->delete();

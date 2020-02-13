@@ -2,6 +2,8 @@
 
 @tailwind components;
 
+
+@tailwind utilities;
 .hide{
   display: none;
 }
@@ -9,4 +11,26 @@
   display: flex;
 }
 
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mb-18 {
+  margin-bottom: 4.5rem;
+}
+
+.pl-13 {
+  padding-left: 3.5rem;
+}
+
+.pr-13 {
+  padding-right: 3.5rem;
+}
+
+.outline-none{
+  outline: 0 !important;
+}
+
 @tailwind utilities;
+
+
