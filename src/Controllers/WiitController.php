@@ -52,8 +52,4 @@ class WiitController extends Controller {
         $this->manager('WiitManager')->deleteWiit();
       }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 73710204ab0b3577430e290862ee7e0ae2b0a07d
 }

@@ -59,18 +59,9 @@ class WittManager extends Manager {
       array_push($posts, ["post" => $post, "user" => $user]);
       return $posts;
     }
-<<<<<<< HEAD
-  }
-    public function deleteWiit()
-    {
-      $this->delete([
-        "id" => $_SESSION["user"]->getId()
-      ]);
-    }
-=======
     return $posts;
   }
->>>>>>> 73710204ab0b3577430e290862ee7e0ae2b0a07d
+  
   public function getAllSubPost() {
     $req = $this->pdo->prepare(
       "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
@@ -84,8 +75,6 @@ class WittManager extends Manager {
     ]);
     $posts = $req->fetchAll();
     return $posts;
-<<<<<<< HEAD
-=======
   }
   public function getNewPost() {
     $req = $this->pdo->prepare(
@@ -118,6 +107,5 @@ class WittManager extends Manager {
       $this->delete([
         "id" => $_SESSION["user"]->getId()
       ]);
->>>>>>> 73710204ab0b3577430e290862ee7e0ae2b0a07d
   }
 }
