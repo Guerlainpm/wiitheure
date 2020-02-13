@@ -8,7 +8,7 @@ class UserController extends Controller {
         $this->views('Auth/authentification.php');
     }
 
-    public function profilePage() {
+    public function profilePage($id) {
       if (isset($_SESSION['user'])) {
         $this->views('Auth/profile.php');
       }else {

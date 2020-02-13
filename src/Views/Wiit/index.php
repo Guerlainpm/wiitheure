@@ -36,10 +36,10 @@
                         }
                         ?>
                                 <div class="w-full">
-                                    <p><a href="/user/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
+                                    <p><a href="/profile/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
                                 </div>
                                 <div class="w-full">
-                                    <p><?php echo $post["post"]->getContent(); ?></p>
+                                    <p><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></p>
                                 </div>
                                 <div class="w-full">
                                     <p><?php echo $post["post"]->getCreateAt(); ?></p>

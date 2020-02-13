@@ -48,7 +48,7 @@ class Wiit
      */
     public function getCreateAt()
     {
-        return $this->created_at;
+        return $this->create_at;
     }
 
     /**

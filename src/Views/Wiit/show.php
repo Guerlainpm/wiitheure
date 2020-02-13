@@ -1,7 +1,9 @@
 <?php
    ob_start();
-   $post = $data["post"];
+   $post = $data["post"]["post"];
+   $userPost = $data["post"]["user"];
    $subs = $data["sub"];
+   //var_dump($userPost);
 ?>
 <?php include VIEWS."/components/popup.php"; ?>
 <main class="container mx-auto flex flex-wrap">
@@ -15,40 +17,24 @@
     </div>
     <div class="md:w-3/6 px-2">
         <div class="w-full mt-4 px-2">
-            <div class="w-full">
-                <ul class="flex">
-                    <li id="sub" class="p-2 text-white bg-primary_2"><a href="/">abo</a></li>
-                    <li id="news" class="ml-2 p-2 text-white bg-primary_2"><a href="/news">news</a></li>
-                </ul>
+            <div id="post">
+                <div>
+                    <div>
+                        <p><?php echo $userPost->getUsername(); ?></p>
+                    </div>
+                    <div>
+                        <p><?php echo $post->getContent(); ?></p>
+                    </div>
+                    <div>
+                        <p><?php echo $post->getCreateAt(); ?></p>
+                    </div>
+                </div>
             </div>
-            <div id="posts">
-            <?php
-                if (isset($_SESSION["user"])) {
-                    foreach ($posts as $key => $post) {
-                        if ($key > 0) {
-                            ?>
-                                <div class="mt-2 bg-red-500 px-4 py-2 bg-blue-500 flex flex-col ">
-                            <?php
-                        } else {
-                            ?>
-                                <div class="bg-red-500 px-4 py-2 bg-blue-500 flex flex-col ">
-                            <?php
-                        }
-                        ?>
-                                <div class="w-full">
-                                    <p><a href="/user/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
-                                </div>
-                                <div class="w-full">
-                                    <p><?php echo $post["post"]->getContent(); ?></p>
-                                </div>
-                                <div class="w-full">
-                                    <p><?php echo $post["post"]->getCreateAt(); ?></p>
-                                </div>
-                            </div>
-                        <?php
-                    }
-                }
-            ?>
+            <div>
+                <form action="/comment/create/<?php echo $post->getId(); ?>" post="/">
+                    <input />
+                    <input type="submit" value="submit"/>
+                </form>
             </div>
         </div>
     </div>
@@ -76,7 +62,7 @@
         </div>
     </div>
 </main>
-<script src="./javascript/popup.js"></script>
+<script src="/javascript/popup.js"></script>
 
 <?php
 $content = ob_get_clean();
