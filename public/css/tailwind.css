@@ -623,14 +623,6 @@ video {
   }
 }
 
-.hide{
-  display: none;
-}
-
-.show{
-  display: flex;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -14655,6 +14647,26 @@ video {
 
 .duration-1000 {
   transition-duration: 1000ms;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: flex;
+}
+
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mb-18 {
+  margin-bottom: 4.5rem;
+}
+
+.outline-none{
+  outline: 0 !important;
 }
 
 @media (min-width: 640px) {

@@ -11,7 +11,7 @@ class User {
     private $id;
     /**
      * Get the value of username
-     */ 
+     */
     public function constructor($username, $password, $mail, $create_at, $bio, $id) {
         $this->username = $username;
         $this->password = $password;
@@ -22,14 +22,14 @@ class User {
     }
     public function getUsername()
     {
-        return htmlspecialchars($this->username);
+        return $this->username;
     }
 
     /**
      * Set the value of username
      *
      * @return  self
-     */ 
+     */
     public function setUsername($username)
     {
         $this->username = $username;
@@ -39,7 +39,7 @@ class User {
 
     /**
      * Get the value of password
-     */ 
+     */
     public function getPassword()
     {
         return htmlspecialchars($this->password);
@@ -49,7 +49,7 @@ class User {
      * Set the value of password
      *
      * @return  self
-     */ 
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -59,7 +59,7 @@ class User {
 
     /**
      * Get the value of mail
-     */ 
+     */
     public function getMail()
     {
         return htmlspecialchars($this->mail);
@@ -69,7 +69,7 @@ class User {
      * Set the value of mail
      *
      * @return  self
-     */ 
+     */
     public function setMail($mail)
     {
         $this->mail = $mail;
@@ -79,7 +79,7 @@ class User {
 
     /**
      * Get the value of create_at
-     */ 
+     */
     public function getCreate_at()
     {
         return htmlspecialchars($this->create_at);
@@ -89,7 +89,7 @@ class User {
      * Set the value of create_at
      *
      * @return  self
-     */ 
+     */
     public function setCreate_at($create_at)
     {
         $this->create_at = $create_at;
@@ -99,7 +99,7 @@ class User {
 
     /**
      * Get the value of bio
-     */ 
+     */
     public function getBio()
     {
         return htmlspecialchars($this->bio);
@@ -109,7 +109,7 @@ class User {
      * Set the value of bio
      *
      * @return  self
-     */ 
+     */
     public function setBio($bio)
     {
         $this->bio = $bio;
@@ -119,7 +119,7 @@ class User {
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return htmlspecialchars($this->id);
@@ -129,7 +129,7 @@ class User {
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;

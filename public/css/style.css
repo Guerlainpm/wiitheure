@@ -27,5 +27,10 @@
   padding-right: 3.5rem;
 }
 
+.outline-none{
+  outline: 0 !important;
+}
 
 @tailwind utilities;
+
+
