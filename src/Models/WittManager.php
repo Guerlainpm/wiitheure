@@ -37,7 +37,7 @@ class WittManager extends Manager {
       INNER JOIN post ON post.user_id = follow.followed
       INNER JOIN user ON user.id = follow.followed
       WHERE follow.user_id = :user_id
-      ORDER BY post.create_at ASC
+      ORDER BY post.create_at DESC
     ");
     $req->execute([
       "user_id" => $_SESSION["user"]->getId()
@@ -59,6 +59,7 @@ class WittManager extends Manager {
       array_push($posts, ["post" => $post, "user" => $user]);
       return $posts;
     }
+<<<<<<< HEAD
   }
     public function deleteWiit()
     {
@@ -66,18 +67,41 @@ class WittManager extends Manager {
         "id" => $_SESSION["user"]->getId()
       ]);
     }
+=======
+    return $posts;
+  }
+>>>>>>> 73710204ab0b3577430e290862ee7e0ae2b0a07d
   public function getAllSubPost() {
     $req = $this->pdo->prepare(
       "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
       INNER JOIN post ON post.user_id = follow.followed
       INNER JOIN user ON user.id = follow.followed
       WHERE follow.user_id = :user_id
-      ORDER BY post.create_at ASC
+      ORDER BY post.create_at DESC
     ");
     $req->execute([
       "user_id" => 1
     ]);
     $posts = $req->fetchAll();
     return $posts;
+<<<<<<< HEAD
+=======
+  }
+  public function getNewPost() {
+    $req = $this->pdo->prepare(
+      "SELECT user.id, post.id, citation, post.create_at, username, content FROM post
+      INNER JOIN user ON post.user_id = user.id
+      ORDER BY post.create_at DESC
+    ");
+    $req->execute();
+    $posts = $req->fetchAll();
+    return $posts;
+  }
+    public function deleteWiit()
+    {
+      $this->delete([
+        "id" => $_SESSION["user"]->getId()
+      ]);
+>>>>>>> 73710204ab0b3577430e290862ee7e0ae2b0a07d
   }
 }

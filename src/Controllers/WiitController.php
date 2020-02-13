@@ -35,10 +35,20 @@ class WiitController extends Controller {
     }
 
     public function getAllSub() {
-      if (isset($_SESSION["user"])) {
-        return $this->manager('UserManager', "user")->getAllSub();
-      } else {
-        return [];
-      }
+      return $this->manager('UserManager', "user")->getAllSub();
     }
+    public function getNewPost() {
+      return $this->manager('WittManager', "post")->getNewPost();
+    }
+    public function delete()
+    {
+      if (isset($_SESSION["user"])) {
+        $this->manager('WiitManager')->deleteWiit();
+      }
+
+    }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 73710204ab0b3577430e290862ee7e0ae2b0a07d
 }

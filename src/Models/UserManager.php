@@ -46,13 +46,13 @@ class UserManager extends \App\Models\Manager {
                 INNER JOIN user ON followed = user.id
                 WHERE follow.user_id = :user_id
             ");
-            $req->setFetchMode(\PDO::FETCH_CLASS, "\\App\\Models\\User");
-            $req->execute([
-                "user_id" => $_SESSION["user"]->getId(),
-            ]);
-            return $req->fetchAll();
+                $req->setFetchMode(\PDO::FETCH_CLASS, "\\App\\Models\\User");
+                $req->execute([
+                    "user_id" => $_SESSION["user"]->getId(),
+                ]);
+                return $req->fetchAll();
+            }
         }
-    }
     public function getAllSubNum($id) {
         if (isset($_SESSION["user"])) {
             $req = $this->pdo->prepare(

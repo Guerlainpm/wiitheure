@@ -19,8 +19,8 @@
         <div class="w-full mt-4 px-2">
             <div class="w-full">
                 <ul class="flex">
-                    <li class="p-2 text-white bg-primary_2">abo</li>
-                    <li class="ml-2 p-2 text-white bg-primary_2">news</li>
+                    <li id="sub" class="p-2 text-white bg-primary_2">abo</li>
+                    <li id="news" class="ml-2 p-2 text-white bg-primary_2">news</li>
                 </ul>
             </div>
             <div id="posts">
@@ -59,30 +59,14 @@
         <div class="mt-4 flex flex-wrap w-full flex">
             <div class="w-1/2 p-2">
                 <p>latest tag</p>
-                <ul>
-                    <li>sub</li>
+                <ul id="popular">
                     
                 </ul>
             </div>
             <div class="w-1/2 p-2">
                 <p>sub</p>
-                <ul>
-                    <?php
-                        if (count($subs) == 0 || $subs == null) {
-                            ?>
-                                <li>:(</li>
-                            <?php
-                        } else {
-                            foreach ($subs as $key => $sub) {
-                                ?>
-                                    <li class="flex w-full justify-between items-center">
-                                        <p><?php echo $sub->getUsername(); ?></p>
-                                        <button class="text-white bg-red-500 p-2 rounded">unsubscribe</button>
-                                    </li>
-                                <?php
-                            }
-                        }
-                    ?>
+                <ul id="follow">
+                    
                 </ul>
             </div>
             

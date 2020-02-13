@@ -53,15 +53,13 @@ class Manager {
     }
     /**
      * option [
-     * 
+     *
      *          "username" => "name",
-     *          value => "colin"
      *      ]
      * ]
      * where [
      *      [
-     *          field => "id",
-     *          value => 3
+     *          id => "1",
      *      ]
      * ]
      */
@@ -122,7 +120,7 @@ class Manager {
     }
     /**
      * Get the value of table
-     */ 
+     */
     public function getTable()
     {
         return $this->table;
@@ -132,7 +130,7 @@ class Manager {
      * Set the value of table
      *
      * @return  self
-     */ 
+     */
     public function setTable($table)
     {
         $this->table = $table;
