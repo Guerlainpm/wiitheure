@@ -10,10 +10,18 @@ class UserController extends Controller {
 
     public function profilePage() {
       if (isset($_SESSION['user'])) {
-        $this->views('Auth/profile.php', ["sub" => $this->getAllSub()]);
+        $this->views('Auth/profile.php', ["sub" => $this->getAllSub(), "wiit"=>$this->getWiitsByID($_SESSION['user']->getId())]);
       }else {
         $this->redirect('/');
       }
+    }
+
+    public function getWiitsByID($user_id)
+    {
+      $wiit = $this->manager('WiitManager', 'post')->find([
+        'user_id' => $user_id,
+        "\\App\\Models\\Wiit"]);
+        return $wiit;
     }
 
     public function getAllSub() {
@@ -93,7 +101,9 @@ class UserController extends Controller {
             'bio'=>$_POST["bio"]],
             ['id'=>$_SESSION["user"]->getId()]);
 
-          $user = $this->manager('UserManager', 'user')->find(['id'=>$_SESSION['user']->getId()], "\\App\\Models\\User")[0];
+          $user = $this->manager('UserManager', 'user')->find([
+            'id'=>$_SESSION['user']->getId()],
+            "\\App\\Models\\User")[0];
           $_SESSION['user'] = $user;
       }
       $this->redirect("/profile".'/'.$_SESSION['user']->getId());

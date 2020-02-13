@@ -44,7 +44,7 @@ class WiitController extends Controller {
       return $this->manager('UserManager', "user")->getAllSub();
     }
     public function getNewPost() {
-      return $this->manager('WittManager', "post")->getNewPost();
+      return $this->manager('WiitManager', "post")->getNewPost();
     }
     public function delete()
     {

@@ -33,6 +33,10 @@ class Router {
             elseif (preg_match('#^\/profile\/([0-9]+)$#', $this->url, $matches)) {
                 $userController->profilePage($matches[1]);
             }
+
+            elseif (preg_match('#^\/wiits\/([0-9]+)$#', $this->url, $matches)) {
+                $wiitController->wiitsPage($matches[1]);
+            }
         }
 
         elseif ($this->method == "POST") {

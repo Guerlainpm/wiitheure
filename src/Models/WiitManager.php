@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class WittManager extends Manager {
+class WiitManager extends Manager {
   public function newPost($content, $user_id) {
     $this->insert([
       "content" => htmlspecialchars($content),
@@ -61,7 +61,7 @@ class WittManager extends Manager {
     }
     return $posts;
   }
-  
+
   public function getAllSubPost() {
     $req = $this->pdo->prepare(
       "SELECT followed, post.id, citation, post.create_at, username, content FROM follow
