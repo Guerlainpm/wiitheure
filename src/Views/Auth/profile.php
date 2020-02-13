@@ -35,16 +35,22 @@
     <div id="name-<?php echo $_SESSION["user"]->getId();?>" class="">
       <p class="text-light border-b-2 border-dark">Pseudo</p>
       <p class="ml-4 pt-2"><?php echo $_SESSION["user"]->getUsername(); ?></p>
+      <p class="ml-4 text-red-500"><?php echo getErrors('username'); ?></p>
+
     </div>
 
     <div id="mail-<?php echo $_SESSION["user"]->getId();?>" class="">
       <p class="text-light border-b-2 border-dark">E-mail</p>
       <p class="ml-4 pt-2"><?php echo $_SESSION['user']->getMail(); ?></p>
+      <p class="ml-4 text-red-500"><?php echo getErrors('mail'); ?></p>
+
     </div>
 
     <div id="bio-<?php echo $_SESSION["user"]->getId();?>" class="">
       <p class="text-light border-b-2 border-dark">Biographie</p>
       <p class="ml-4 pt-2"><?php echo $_SESSION['user']->getBio(); ?></p>
+      <p class="ml-4 text-red-500"><?php echo getErrors('bio'); ?></p>
+
     </div>
 
 
@@ -53,19 +59,19 @@
         <div class="flex flex-col">
           <label class="text-light border-b-2 border-dark" for="username">Pseudo</label>
           <input class="outline-none mt-2 rounded-lg p-4" type="text" name="username" value="<?php echo $_SESSION["user"]->getUsername();?>" placeholder="Username">
-          <p><?php echo getErrors('username'); ?></p>
+          <p class="ml-4 text-red-500"><?php echo getErrors('username'); ?></p>
         </div>
 
         <div class="flex flex-col">
           <label class="text-light border-b-2 border-dark" for="username">E-mail</label>
           <input class="outline-none mt-2 rounded-lg p-4" type="text" name="mail" value="<?php echo $_SESSION['user']->getMail(); ?>" placeholder="Mail">
-          <p><?php echo getErrors('mail'); ?></p>
+          <p class="ml-4 text-red-500"><?php echo getErrors('mail'); ?></p>
         </div>
 
         <div class="flex flex-col">
           <label class="text-light border-b-2 border-dark" for="username">Biographie</label>
           <textarea class="outline-none mt-2 resize-none rounded-lg p-4" name="bio" rows="8" cols="80" placeholder="Bio"><?php echo $_SESSION['user']->getBio(); ?></textarea>
-          <p><?php echo getErrors('bio'); ?></p>
+          <p class="ml-4 text-red-500"><?php echo getErrors('bio'); ?></p>
         </div>
         <div class="flex justify-center">
           <button class="outline-none px-4 py-2 rounded-full bg-dark text-white transition duration-100 hover:bg-light" type="submit" name="button">Envoyer</button>
