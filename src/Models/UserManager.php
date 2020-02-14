@@ -31,13 +31,20 @@ class UserManager extends \App\Models\Manager {
         ]);
     }
     public function follow($followed) {
-        if ($user_id != $_SESSION["user"]->getId()) {
+        if ($followed != $_SESSION["user"]->getId()) {
             $req = $this->pdo->prepare("INSERT INTO follow (user_id, followed) VALUES (:user_id, :followed);");
             $req->execute([
                 "user_id" => $_SESSION["user"]->getId(),
                 "followed" => $followed
             ]);
         }
+    }
+    public function unfollow($followed) {
+        $req = $this->pdo->prepare("DELETE FROM follow WHERE followed=:followed AND user_id=:user_id");
+        $req->execute([
+            "user_id" => $_SESSION["user"]->getId(),
+            "followed" => $followed
+        ]);
     }
     public function getAllSub() {
         if (isset($_SESSION["user"])) {
