@@ -1,10 +1,12 @@
 <?php
    ob_start();
 ?>
-  <div class="flex flex-wrap">
-    <div class="w-1/3 h-screen overflow-y-auto border-r-2 border-dark flex flex-col">
-      <h2 class="text-3xl text-light"><?php echo $data["user"]->getUsername(); ?></h2>
-      <p>Créé le : <?php echo $data['user']->getCreate_at(); ?></p>
+
+  <div class="flex flex-wrap justify-center">
+    <div class="md:w-1/3 w-2/3 h-screen overflow-y-auto border-r-2 border-dark flex-col md:flex hidden" id="profil-<?php echo $_SESSION["user"]->getId();?>">
+      <h2 class="text-3xl text-light"><?php echo $_SESSION["user"]->getUsername(); ?></h2>
+      <p>Créé le : <?php echo $_SESSION['user']->getCreate_at(); ?></p>
+
 
       <div class="w-full p-4 flex flex-col">
         <div class="w-full flex flex-col py-4 items-center">
@@ -52,15 +54,10 @@
                     <button class="outline-none px-4 py-2 rounded-full bg-dark text-white transition duration-100 hover:bg-light" type="submit" name="button">Envoyer</button>
                   </div>
                 </form>
-                <?php 
-                  if($data["user"]->getId() == $_SESSION["user"]->getId()){
-                    ?>
-                    <div class="flex justify-center">
-                      <button class="outline-none h-10 w-10 rounded-full bg-dark text-white transition duration-100 hover:bg-light"onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="toggleUser-<?php echo $_SESSION['user']->getId();?>"><i class="fas fa-pencil-alt"></i></button>
-                    </div>
-                    <?php
-                  }
-                ?>
+
+                <div class="flex justify-center">
+                  <button class="outline-none h-10 w-10 rounded-full bg-dark text-white transition duration-100 hover:bg-light" onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="toggleUser-<?php echo $_SESSION['user']->getId();?>"><i class="fas fa-pencil-alt"></i></button>
+                </div>
 
               </div>
             </div>
@@ -82,8 +79,8 @@
         </div>
     </div>
       <!-- Wiits -->
-
-      <div class="w-2/3 pb-48 pl-8 h-screen overflow-y-auto">
+      <div class="text-2xl md:hidden flex mt-4" onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="bar-<?php echo $_SESSION["user"]->getId();?>"><i class="far fa-user cursor-pointer h-6"></i></div>
+      <div class="w-2/3 pb-48 pl-8 h-screen overflow-y-auto" id="wiit-<?php echo $_SESSION["user"]->getId();?>">
         <?php foreach ($data['wiit'] as $wiit) {
           ?>
           <div class="bg-white p-4 rounded-lg border-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
@@ -110,6 +107,11 @@
       document.getElementById("mail-" + id).classList.toggle('hide');
 
       document.getElementById("bio-" + id).classList.toggle('hide');
+
+      document.getElementById("bar-" + id).classList.toggle('hide');
+      document.getElementById("profil-" + id).classList.toggle('show');
+      document.getElementById("wiit-" + id).classList.toggle('hide');
+
     }
   </script>
 
