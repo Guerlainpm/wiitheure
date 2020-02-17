@@ -52,7 +52,6 @@
                     <button class="outline-none px-4 py-2 rounded-full bg-dark text-white transition duration-100 hover:bg-light" type="submit" name="button">Envoyer</button>
                   </div>
                 </form>
-<<<<<<< HEAD
                 <div class="flex justify-center">
                   <button class="outline-none h-10 w-10 rounded-full bg-dark text-white transition duration-100 hover:bg-light" onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="toggleUser-<?php echo $_SESSION['user']->getId();?>"><i class="fas fa-pencil-alt"></i></button>
                 </div>
@@ -66,13 +65,6 @@
                   }
                 ?>
 
-=======
-
-                <div class="flex justify-center">
-                  <button class="outline-none h-10 w-10 rounded-full bg-dark text-white transition duration-100 hover:bg-light" onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="toggleUser-<?php echo $_SESSION['user']->getId();?>"><i class="fas fa-pencil-alt"></i></button>
-                </div>
-
->>>>>>> 6ffc5458cb2492e7250eaff1d9b344b21d69f907
               </div>
             </div>
             <div class="w-full pt-24">
