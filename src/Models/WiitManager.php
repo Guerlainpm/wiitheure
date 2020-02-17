@@ -99,10 +99,16 @@ class WiitManager extends Manager {
     }
     return $posts;
   }
-    public function deleteWiit()
-    {
-      $this->delete([
-        "id" => $_SESSION["user"]->getId()
-      ]);
+  public function deleteWiit()
+  {
+    $this->delete([
+      "id" => $_SESSION["user"]->getId()
+    ]);
+  }
+  public function search($regex) {
+    $req = $this->pdo->prepare("SELECT * FROM post WHERE content REGEXP \"$regex\";");
+    $req->setFetchMode(\PDO::FETCH_CLASS, "App\\Models\\Wiit");
+    $req->execute();
+    return $req->fetchAll();
   }
 }

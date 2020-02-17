@@ -10,7 +10,9 @@ class UserController extends Controller {
 
     public function profilePage($id) {
       if (isset($_SESSION['user'])) {
-        $this->views('Auth/profile.php', ["sub" => $this->getAllSub(), "wiit"=>$this->getWiitsByID($_SESSION['user']->getId())]);
+        $this->views('Auth/profile.php', ["sub" => $this->getAllSub(), "wiit"=>$this->getWiitsByID($id), "user" => $this->manager('manager', 'user')->find([
+            'id'=>$id],
+            "\\App\\Models\\User")[0]]);
       }else {
         $this->redirect('/');
       }
