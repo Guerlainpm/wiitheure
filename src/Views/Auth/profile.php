@@ -10,36 +10,36 @@
         <div class="w-full flex flex-col py-4 items-center">
           <div class="w-full flex flex-col flex-grow py-4">
             <div class="flex flex-col justify-around">
-              <div id="name-<?php echo $_SESSION["user"]->getId();?>" class="mb-8">
+              <div id="name-<?php echo $data["user"]->getId();?>" class="mb-8">
                 <p class="text-light border-b-2 border-dark">Pseudo</p>
-                <p class="ml-4 pt-2"><?php echo $_SESSION["user"]->getUsername(); ?></p>
+                <p class="ml-4 pt-2"><?php echo $data["user"]->getUsername(); ?></p>
                 <p class="ml-4 text-red-500"><?php echo getErrors('username'); ?></p>
               </div>
 
-              <div id="mail-<?php echo $_SESSION["user"]->getId();?>" class="mb-8">
+              <div id="mail-<?php echo $data["user"]->getId();?>" class="mb-8">
                 <p class="text-light border-b-2 border-dark">E-mail</p>
-                <p class="ml-4 pt-2"><?php echo $_SESSION['user']->getMail(); ?></p>
+                <p class="ml-4 pt-2"><?php echo $data['user']->getMail(); ?></p>
                 <p class="ml-4 text-red-500"><?php echo getErrors('mail'); ?></p>
 
               </div>
 
-              <div id="bio-<?php echo $_SESSION["user"]->getId();?>" class="mb-8">
+              <div id="bio-<?php echo $data["user"]->getId();?>" class="mb-8">
                 <p class="text-light border-b-2 border-dark">Biographie</p>
-                <p class="ml-4 pt-2"><?php echo $_SESSION['user']->getBio(); ?></p>
+                <p class="ml-4 pt-2"><?php echo $data['user']->getBio(); ?></p>
                 <p class="ml-4 text-red-500"><?php echo getErrors('bio'); ?></p>
 
               </div>
           <!-- form -->
-              <form class="hidden flex-col justify-around" id="update-<?php echo $_SESSION["user"]->getId();?>" action="/profile/<?php echo $_SESSION['user']->getId(); ?>/edit" method="post">
+              <form class="hidden flex-col justify-around" id="update-<?php echo$data["user"]->getId();?>" action="/profile/<?php echo $_SESSION['user']->getId(); ?>/edit" method="post">
                   <div class="flex flex-col mb-8">
                     <label class="text-light border-b-2 border-dark" for="username">Pseudo</label>
-                    <input class="outline-none mt-2 rounded-lg p-4" type="text" name="username" value="<?php echo $_SESSION["user"]->getUsername();?>" placeholder="Username">
+                    <input class="outline-none mt-2 rounded-lg p-4" type="text" name="username" value="<?php echo $data["user"]->getUsername();?>" placeholder="Username">
                     <p class="ml-4 text-red-500"><?php echo getErrors('username'); ?></p>
                   </div>
 
                   <div class="flex flex-col mb-8">
                     <label class="text-light border-b-2 border-dark" for="username">E-mail</label>
-                    <input class="outline-none mt-2 rounded-lg p-4" type="text" name="mail" value="<?php echo $_SESSION['user']->getMail(); ?>" placeholder="Mail">
+                    <input class="outline-none mt-2 rounded-lg p-4" type="text" name="mail" value="<?php echo $data['user']->getMail(); ?>" placeholder="Mail">
                     <p class="ml-4 text-red-500"><?php echo getErrors('mail'); ?></p>
                   </div>
 
@@ -55,6 +55,16 @@
                 <div class="flex justify-center">
                   <button class="outline-none h-10 w-10 rounded-full bg-dark text-white transition duration-100 hover:bg-light" onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="toggleUser-<?php echo $_SESSION['user']->getId();?>"><i class="fas fa-pencil-alt"></i></button>
                 </div>
+                <?php 
+                  if($data["user"]->getId() == $_SESSION["user"]->getId()){
+                    ?>
+                    <div class="flex justify-center">
+                      <button class="outline-none h-10 w-10 rounded-full bg-dark text-white transition duration-100 hover:bg-light"onclick="toggle(<?php echo $_SESSION['user']->getId();?>)" id="toggleUser-<?php echo $_SESSION['user']->getId();?>"><i class="fas fa-pencil-alt"></i></button>
+                    </div>
+                    <?php
+                  }
+                ?>
+
               </div>
             </div>
             <div class="w-full pt-24">
@@ -80,7 +90,7 @@
         <?php foreach ($data['wiit'] as $wiit) {
           ?>
           <div class="bg-white p-4 rounded-lg border-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
-              <p class="mb-2 text-light border-b-2 border-dark"><?php echo $_SESSION['user']->getUsername(); ?></p>
+              <p class="mb-2 text-light border-b-2 border-dark"><?php echo $data['user']->getUsername(); ?></p>
               <div class="ml-8 text-sm overflow-y-auto max-h-full">
                 <?php echo $wiit["content"]; ?>
               </div>
