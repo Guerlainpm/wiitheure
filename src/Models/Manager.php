@@ -98,8 +98,7 @@ class Manager {
             }
             $index++;
         }
-        $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ". $whereReq.";");
-        var_dump($req);
+        $req = $this->pdo->prepare("SELECT * FROM ". $this->table ." WHERE ".$whereReq.";");
         if (isset($classPath)) {
             $req->setFetchMode(\PDO::FETCH_CLASS, $classPath);
         }
