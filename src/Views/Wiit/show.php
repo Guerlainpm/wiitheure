@@ -29,12 +29,18 @@
                 </div>
             </div>
             <div>
-                <form action="/comment/create/<?php echo $post->getId(); ?>" method="POST">
-                    <?php global $router; ?>
-                    <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>" />
-                    <input name="content"/>
-                    <input type="submit" value="submit"/>
-                </form>
+                <?php
+                    if (isset($_SESSION["user"])) {
+                        ?>
+                            <form action="/comment/create/<?php echo $post->getId(); ?>" method="POST">
+                                <?php global $router; ?>
+                                <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>" />
+                                <input name="content"/>
+                                <input type="submit" value="submit"/>
+                            </form>
+                        <?php
+                    }
+                ?>
                 <ul>
                 <?php
                     foreach ($comments as $key => $value) {
@@ -42,12 +48,7 @@
                             ?>
                                 <li>
                                     <p><a href="/profile/<?php echo $value["user"]->getId(); ?>"><?php echo $value["user"]->getUsername(); ?></a>: <?php echo $value["comment"]->getContent(); ?></p>
-                                    <form action="/comment/rep/create/<?php echo $post->getId(); ?>" method="POST">
-                                        <input type="hidden" name="comment_id" value="<?php echo $value["comment"]->getId(); ?>" />
-                                        <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>" />
-                                        <input name="content"/>
-                                        <input type="submit" value="submit"/>
-                                    </form>
+                                    
                                     <ul>
                                     <?php
                                         foreach ($comments as $repK => $reponse) {
@@ -59,6 +60,18 @@
                                         }
                                     ?>
                                     </ul>
+                                    <?php
+                                        if (isset($_SESSION["user"])) {
+                                            ?>
+                                            <form action="/comment/rep/create/<?php echo $post->getId(); ?>" method="POST">
+                                                        <input type="hidden" name="comment_id" value="<?php echo $value["comment"]->getId(); ?>" />
+                                                        <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>" />
+                                                        <input name="content"/>
+                                                        <input type="submit" value="submit"/>
+                                                    </form>
+                                            <?php
+                                        }
+                                    ?>
                                 </li>
                             <?php
                         }
