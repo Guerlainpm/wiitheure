@@ -4,18 +4,20 @@ namespace App\Controllers;
 class WiitController extends Controller {
 
     public function index() {
-        $this->views('Wiit/index.php', ["posts" => $this->getAllSubPost(), "sub" => $this->getAllSub()]);
+        $this->views('Wiit/index.php', ["posts" => $this->getAllSubPost(), "sub" => $this->getAllSub(), "where" => "accueil"]);
 
     }
     public function indexNews() {
-      $this->views('Wiit/index.php', ["posts" => $this->getNewPost(), "sub" => $this->getAllSub()]);
+      $this->views('Wiit/index.php', ["posts" => $this->getNewPost(), "sub" => $this->getAllSub(), "where" => "news"]);
     }
     public function show($pos_id) {
       $this->views('Wiit/show.php', ["post" => [
         "post" => $this->getOnePost($pos_id),
-        "user" => $this->getOneUser($this->getOnePost($pos_id)->getUserId())],
+        "user" => $this->getOneUser($this->getOnePost($pos_id)->getUserId())
+      ],
         "comments" => $this->getComment($pos_id),
-        "sub" => $this->getAllSub()
+        "sub" => $this->getAllSub(),
+        "where" => ""
       ]);
     }
     public function getComment($post_id) {
@@ -74,4 +76,18 @@ class WiitController extends Controller {
         $this->manager('WiitManager')->deleteWiit();
       }
     }
+    public function search() {
+      // search user & post
+      $search = preg_quote($_POST["search"], '/');
+      $posts = $this->manager('WiitManager', "post")->search($search);
+      $finalPost = [];
+      foreach ($posts as $key => $post) {
+        array_push($finalPost, ["post" => $post, "user" => $this->getOneUser($post->getUserId())]);
+      }
+      $this->views('Wiit/index.php', [
+        "posts" => $finalPost,
+        "sub" => $this->getAllSub(),
+        "where" => "search: ".$_POST["search"]
+      ]);
+  }
 }

@@ -13,7 +13,7 @@ class Wiit
 
     public function constructor($content, $create_at, $citation, $id, $user_id) {
         $this->content = $content;
-        $this->created_at = $create_at;
+        $this->create_at = $create_at;
         $this->citation = $citation;
         $this->id = $id;
         $this->user_id = $user_id;

@@ -42,12 +42,18 @@ class Router {
             elseif (preg_match('#^\/post\/([0-9]+)$#', $this->url, $matches)) {
                 $wiitController->show($matches[1]);
             }
+            elseif (preg_match('#^\/wiits\/([0-9]+)$#', $this->url, $matches)) {
+                $wiitController->wiitsPage($matches[1]);
+            }
         }
 
         elseif ($this->method == "POST") {
 
             if (preg_match('#^\/profile\/([0-9]+)$#',$this->url,$matches)) {
                 $wiitController->show($matches[1]);
+            }
+            elseif ($this->url == "/search") {
+                $wiitController->search();
             }
             elseif (preg_match('#^\/comment\/create\/([0-9]+)$#', $this->url, $matches)) {
                 $commentController->createComment($matches[1]);
@@ -92,7 +98,7 @@ class Router {
 
     /**
      * Get the value of url
-     */
+     */ 
     public function getUrl()
     {
         return $this->url;
