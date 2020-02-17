@@ -48,7 +48,7 @@ class WiitController extends Controller {
           );
           $this->redirect('/');
         }else {
-          $this->redirect('/create');
+          $this->redirect('/');
         }
       }
     }
