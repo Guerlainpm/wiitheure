@@ -17,7 +17,7 @@
     <div class="w-64 md:w-3/6 h-5 px-2">
         <div class="w-full mt-4 px-2">
             <div class="w-full">
-                <div class="w-full border-b border-blue-600 font-bold	text-lg">Acceuil</div>
+                <div class="w-full border-b border-blue-600 font-bold text-lg"><?php echo $data["where"]; ?></div>
             </div>
             <div id="posts">
             <?php
@@ -44,6 +44,7 @@
                                     <p><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></a></p>
                                 </div>
                                 <div class="w-full">
+
                                     <p><?php echo $post["post"]->getCreateAt(); ?></p>
                                 </div>
                             </div>
