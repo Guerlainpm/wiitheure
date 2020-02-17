@@ -10,7 +10,9 @@ class UserController extends Controller {
 
     public function profilePage($id) {
       if (isset($_SESSION['user'])) {
-        $this->views('Auth/profile.php', ["sub" => $this->getAllSub(), "wiit"=>$this->getWiitsByID($_SESSION['user']->getId())]);
+        $this->views('Auth/profile.php', ["sub" => $this->getAllSub(), "wiit"=>$this->getWiitsByID($id), "user" => $this->manager('manager', 'user')->find([
+          'id'=>$id],
+          "\\App\\Models\\User")[0]]);
       }else {
         $this->redirect('/');
       }
@@ -30,7 +32,7 @@ class UserController extends Controller {
     }
     public function getWiitsByID($user_id)
     {
-      $wiit = $this->manager('WiitManager', 'post')->find([
+      $wiit = $this->manager('manager', 'post')->find([
         'user_id' => $user_id,
         "\\App\\Models\\Wiit"]);
         return $wiit;

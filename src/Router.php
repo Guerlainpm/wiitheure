@@ -42,9 +42,6 @@ class Router {
             elseif (preg_match('#^\/post\/([0-9]+)$#', $this->url, $matches)) {
                 $wiitController->show($matches[1]);
             }
-            elseif (preg_match('#^\/wiits\/([0-9]+)$#', $this->url, $matches)) {
-                $wiitController->wiitsPage($matches[1]);
-            }
         }
 
         elseif ($this->method == "POST") {
@@ -95,7 +92,7 @@ class Router {
 
     /**
      * Get the value of url
-     */ 
+     */
     public function getUrl()
     {
         return $this->url;
