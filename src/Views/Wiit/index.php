@@ -19,6 +19,7 @@
         <div class="w-full mt-4 px-2 h-full overflow-y-auto pb-56">
             <div class="w-full">
                 <div class="py-1 mb-2 w-full h-full border-b-2 border-blue-600 font-bold	text-lg text-blue-600">Accueil</div>
+
             </div>
             <div id="posts h-full">
             <?php

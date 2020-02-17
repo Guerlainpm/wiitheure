@@ -6,6 +6,13 @@ ob_start();
     <a href="/" class="w-20 md:w-24 lg:w-20 rounded-full bg-white h-full">
       <img src="/logo.png" alt="logo">
     </a>
+      <form action="/search" method="post">
+        <label for="search" class="text-white">search</label>
+        <div class="flex">
+          <input id="search" class="text-black bg-white w-full border-t-2 border-b-2 border-l-2 border-blue-600 rounded-l-lg py-1 px-2" name="search"/>
+          <button class="text-blue-500 bg-white px-2 rounded-r-lg border-t-2 border-b-2 border-r-2 border-blue-600" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+      </form>
       <?php
         if (isset($_SESSION["user"])) {
           ?>

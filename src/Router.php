@@ -49,6 +49,9 @@ class Router {
             if (preg_match('#^\/profile\/([0-9]+)$#',$this->url,$matches)) {
                 $wiitController->show($matches[1]);
             }
+            elseif ($this->url == "/search") {
+                $wiitController->search();
+            }
             elseif (preg_match('#^\/comment\/create\/([0-9]+)$#', $this->url, $matches)) {
                 $commentController->createComment($matches[1]);
             }
