@@ -5,9 +5,9 @@
  include VIEWS."/components/popup.php";
   ?>
 <script src="https://kit.fontawesome.com/24b7d06377.js" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/24b7d06377.js" crossorigin="anonymous"></script>
-<div class="container mx-auto flex flex-wrap h-screen">
+<div class="container mx-auto flex flex-col md:flex-row h-screen">
     <div class="md:w-1/6">
-        <div class=" border-r-2 border-dark md:border-r-0 mt-4 flex flex-wrap w-full md:flex flex-col">
+        <div class="flex flex-row md:flex-col justify-center md:mt-4 w-full">
             <a class='text-lg text-blue-600 md:w-full md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white' href="/"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-home"></i> <div class="font-bold hidden md:flex">Accueil</div> </button></a>
             <a class="text-lg text-blue-600 md:w-full md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white" href="/news"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-hashtag"></i><div class="font-bold hidden md:flex">Nouveautés</div></button> </a>
             <a class="text-lg text-blue-600 md:w-full md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white" href="/profile/<?php echo $_SESSION['user']->getId(); ?>"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-user"></i> <div class="font-bold hidden md:flex">Votre compte</div></button> </a>
@@ -15,21 +15,19 @@
         </div>
     </div>
 
-    <div class="w-64 md:w-3/6 px-2 h-full">
-        <div class="w-full mt-4 px-2 h-full overflow-y-auto pb-56">
-            <div class="w-full">
-                <div class="py-1 mb-2 w-full h-full border-b-2 border-blue-600 font-bold	text-lg text-blue-600"><?php echo $data["where"] ?></div>
-
-            </div>
-            <div id="posts h-full">
-            <?php
-              if (isset($_SESSION["user"]) && $data["where"] == "accueil" && count($posts) == 0) {
-                ?>
-                  <div class="flex justify-center">
-                    <div class="flex flex-col mt-2">
-                      <p>vous ne suivez actuellement personne</p>
-                      <button class="mt-2 text-blue-500 bg-white border-2 border-blue-600 rounded-lg uppercase py-2 px-3 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white"><a href="/news">nouveautés</a></button>
-                    </div>
+    <div class="w-64 md:w-3/6 px-2 h-full w-full py-4 md:py-0">
+        <div class="w-full md:mt-4 px-2 h-full overflow-y-auto md:pb-56 pb-40">
+          <div class="w-full">
+            <div class="py-1 mb-2 w-full h-full border-b-2 border-blue-600 font-bold	text-lg text-blue-600"><?php echo $data["where"] ?></div>
+          </div>
+          <div id="posts h-full">
+          <?php
+            if (isset($_SESSION["user"]) && $data["where"] == "accueil" && count($posts) == 0) {
+              ?>
+                <div class="flex justify-center">
+                  <div class="flex flex-col mt-2">
+                    <p>vous ne suivez actuellement personne</p>
+                    <button class="mt-2 text-blue-500 bg-white border-2 border-blue-600 rounded-lg uppercase py-2 px-3 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white"><a href="/news">nouveautés</a></button>
                   </div>
                 <?php
               }
@@ -72,7 +70,7 @@
             </div>
         </div>
       </div>
-      <div class="md:w-2/6">
+      <div class="md:w-2/6 hidden md:block">
         <div class="mt-4 flex flex-wrap w-full flex">
           <div class="h-screen overflow-y-auto w-full px-8 pb-64">
             <ul>

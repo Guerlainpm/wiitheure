@@ -15,7 +15,8 @@
           include VIEWS . "components/navbar.php";
         ?>
       </nav>
-      <main class="py-32 h-full flex-grow container mx-auto">
+      <main class="md:py-32 py-24 h-full flex-grow container mx-auto">
+
         <?php echo $content; ?>
       </main>
 
