@@ -40,6 +40,7 @@
                     <?php
                       if (isset($_SESSION["user"]) && $_SESSION["user"]->getId() != $post["user"]->getId()) {
                       ?>
+
                         <form action="/follow" method="post">
                           <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
                           <button class=" md:py-2 md:px-3 py-0 md:border-2 md:border-blue-600 md:bg-white text-blue-500 rounded-lg transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit">Suivre</button>
@@ -58,6 +59,7 @@
             }
           ?>
           </div>
+
         </div>
       </div>
       <div class="md:w-2/6 hidden md:block">
