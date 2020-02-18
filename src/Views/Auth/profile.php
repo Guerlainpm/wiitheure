@@ -8,7 +8,7 @@
   <div class="text-white w-64 p-3 ml-8">Éditer le profil</div>
 </div>
   <div class="flex flex-wrap justify-center">
-    <div class="md:w-1/3 w-2/3 h-screen overflow-y-auto border-r-0 md:border-r-2 border-dark flex-col md:flex hidden" id="profil-<?php echo $_SESSION["user"]->getId();?>">
+    <div class="w-full px-3 md:px-0 md:w-1/3 h-screen overflow-y-auto border-r-0 md:border-r-2 border-dark flex-col md:flex hidden" id="profil-<?php echo $_SESSION["user"]->getId();?>">
       <h2 class="text-3xl text-light"><?php echo $data["user"]->getUsername(); ?></h2>
       <p>Créé le : <?php echo $_SESSION['user']->getCreate_at(); ?></p>
       <div class="w-full p-4 flex flex-col">
@@ -36,28 +36,28 @@
                 <p class="ml-4 text-red-500"><?php echo getErrors('bio'); ?></p>
 
               </div>
-  
+
           <!-- form -->
 
               <form class="hidden flex-col justify-around" id="update-<?php echo $data["user"]->getId();?>" action="/profile/<?php echo $_SESSION['user']->getId(); ?>/edit" method="post">
 
                   <div class="flex flex-col mb-8">
                     <label class="text-light border-b-2 border-dark" for="username">Pseudo</label>
-                    <input class="outline-none mt-2 rounded-lg p-4" type="text" name="username" value="<?php echo $data["user"]->getUsername();?>" placeholder="Username">
+                    <input class="border-l-4 border border-gray-400 outline-none mt-2 rounded-lg p-4" type="text" name="username" value="<?php echo $data["user"]->getUsername();?>" placeholder="Username">
                     <p class="ml-4 text-red-500"><?php echo getErrors('username'); ?></p>
                   </div>
 
                   <div class="flex flex-col mb-8">
                     <label class="text-light border-b-2 border-dark" for="username">E-mail</label>
 
-                    <input class="outline-none mt-2 rounded-lg p-4" type="text" name="mail" value="<?php echo $data['user']->getMail(); ?>" placeholder="Mail">
+                    <input class="border-l-4 border border-gray-400 outline-none mt-2 rounded-lg p-4" type="text" name="mail" value="<?php echo $data['user']->getMail(); ?>" placeholder="Mail">
 
                     <p class="ml-4 text-red-500"><?php echo getErrors('mail'); ?></p>
                   </div>
 
                   <div class="flex flex-col mb-8">
                     <label class="text-light border-b-2 border-dark" for="username">Biographie</label>
-                    <textarea class="outline-none mt-2 resize-none rounded-lg p-4" name="bio" rows="8" cols="80" placeholder="Bio"><?php echo $_SESSION["user"]->getBio(); ?></textarea>
+                    <textarea class="border-l-4 border border-gray-400 outline-none mt-2 resize-none rounded-lg p-4" name="bio" rows="8" cols="80" placeholder="Bio"><?php echo $_SESSION["user"]->getBio(); ?></textarea>
                     <p class="ml-4 text-red-500"><?php echo getErrors('bio'); ?></p>
                   </div>
                   <div class="flex justify-center mb-2">
@@ -65,7 +65,7 @@
                   </div>
                 </form>
 
-                <?php 
+                <?php
                   if($data["user"]->getId() == $_SESSION["user"]->getId()){
                     ?>
                 <div class="flex justify-center">
@@ -78,7 +78,7 @@
               </div>
             </div>
             <div class="w-full pt-24">
-            <?php 
+            <?php
                   if($data["user"]->getId() == $_SESSION["user"]->getId()){
                     ?>
               <h3 class="mb-2 text-xl text-light border-b-2 border-dark">Vos abonnements</h3>
@@ -101,14 +101,14 @@
             </div>
           </div>
         </div>
-        
+
     </div>
       <!-- Wiits -->
-      
-      <div class="w-2/3 pb-48 md:pl-8 h-screen overflow-y-auto" id="wiit-<?php echo $_SESSION["user"]->getId();?>">
+
+      <div class="w-full px-3 md:px-0 md:w-2/3 pb-48 md:pl-8 h-screen overflow-y-auto" id="wiit-<?php echo $_SESSION["user"]->getId();?>">
       <div class="text-2xl md:hidden flex justify-between my-3 content-center items-center px-2" id="bar-<?php echo $_SESSION["user"]->getId();?>">
-        <i class="far fa-user cursor-pointer" onclick="mobile(<?php echo $_SESSION['user']->getId();?>)"></i>
-        <a href="/"> <i class="fas fa-home"></i></a>
+        <i class="text-blue-600 far fa-user cursor-pointer" onclick="mobile(<?php echo $_SESSION['user']->getId();?>)"></i>
+        <a href="/"> <i class="text-blue-600 fas fa-home"></i></a>
       </div>
         <?php foreach ($data['wiit'] as $wiit) {
           ?>
@@ -153,7 +153,7 @@
       document.getElementById("bar-" + id).classList.remove('hide');
       document.getElementById("profil-" + id).classList.remove('show');
       document.getElementById("wiit-" + id).classList.remove('hide');
-      
+
       document.getElementById("blueNav-" + id).classList.remove('show');
       document.getElementById("hiddenNav-" + id).classList.remove('hide');
     }
