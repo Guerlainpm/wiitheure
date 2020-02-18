@@ -15,18 +15,18 @@
                 <label class=" mb-2 lg:w-64 md:w-48 border-b-2 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="username">Nom
                     d'utilisateur</label>
-                <input class="mb-2 lg:w-64 md:w-48 h-12 p-4 rounded-lg " id="login-username" type="text" name="login-username"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 md:w-48 h-12 p-4 rounded " id="login-username" type="text" name="login-username"
                     value="<?php echo getOld("login-username");?>">
 
                 <label class=" mb-2 lg:w-64 md:w-48 border-b-2 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="mail">Mail</label>
-                <input class="mb-2 lg:w-64 md:w-48 h-12 p-4 rounded-lg" id="login-mail" type="text" name="login-mail"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 mb-2 lg:w-64 md:w-48 h-12 p-4 rounded" id="login-mail" type="text" name="login-mail"
                     value="<?php echo getOld("login-mail");?>">
 
                 <label class=" mb-2 lg:w-64 border-b-2 md:w-48 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="password">Mot de
                     passe</label>
-                <input class="mb-2 lg:w-64 h-12 p-4 md:w-48 rounded-lg " id="login-password" type="password" name="login-password"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="login-password" type="password" name="login-password"
                     value="<?php echo getOld("login-password");?>">
 
 
@@ -42,26 +42,26 @@
                 <label class="lg:w-64 mb-2 md:w-48 border-b-2 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="username">Nom
                     d'utilisateur</label>
-                <input class="mb-2 lg:w-64 md:w-48 h-12 p-4 rounded-lg " id="register-username" type="text"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 mb-2 lg:w-64 md:w-48 h-12 p-4 rounded " id="register-username" type="text"
                     name="register-username" value="<?php echo getOld("register-username");?>">
     
                 <label class="lg:w-64 mb-2 border-b-2 md:w-48 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="mail">Mail</label>
-                <input class="mb-2 lg:w-64 h-12 p-4 md:w-48 rounded-lg " id="mail" type="text" name="register-mail"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="mail" type="text" name="register-mail"
                     value="<?php echo getOld("register-mail");?>">
 
 
                 <label class="lg:w-64 mb-2 border-b-2 md:w-48 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="password">Mot de
                     passe</label>
-                <input class="mb-2 lg:w-64 h-12 p-4 md:w-48 rounded-lg " id="password" type="password" name="password"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="password" type="password" name="password"
                     value="<?php echo getOld("password");?>">
             
                 <label class="lg:w-64 mb-2 border-b-2 border-dark md:w-48 xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="passwordConfirm">Confirmer
                     le
                     mot de passe</label>
-                <input class="mb-2 lg:w-64 h-12 p-4 rounded-lg md:w-48 " id="passwordConfirm" type="password"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 rounded md:w-48 " id="passwordConfirm" type="password"
                     name="passwordConfirm" value="<?php echo getOld("passwordConfirm");?>">
             </div>
             <button class=" lg:w-64 h-12 md:w-48 rounded-lg border border-black" type="submit">Envoyer</button>
