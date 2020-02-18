@@ -21,7 +21,7 @@
                 <label class=" mb-2 lg:w-64 md:w-48 border-b-2 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="mail">Mail</label>
                 <input class="border-l-4 border border-gray-400 outline-none mb-2 mb-2 lg:w-64 md:w-48 h-12 p-4 rounded" id="login-mail" type="text" name="login-mail"
-                    value="<?php echo getOld("login-mail");?>">
+                    value="<?php echo getOld("login-mail");?>"> 
 
                 <label class=" mb-2 lg:w-64 border-b-2 md:w-48 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="password">Mot de
