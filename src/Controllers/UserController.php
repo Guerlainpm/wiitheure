@@ -117,4 +117,11 @@ class UserController extends Controller {
       }
       $this->redirect("/profile".'/'.$_SESSION['user']->getId());
     }
+
+    public function deleteComment() {
+        $this->manager('CommentManager', "comment")->delete([
+            "id" => $_POST["comment_id"]
+        ]);
+        $this->redirect($_POST["url"]);
+    }
 }
