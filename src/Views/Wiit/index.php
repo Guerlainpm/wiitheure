@@ -23,15 +23,32 @@
             </div>
             <div id="posts h-full">
             <?php
+              if (isset($_SESSION["user"]) && $data["where"] == "accueil" && count($posts) == 0) {
+                ?>
+                  <div class="flex justify-center">
+                    <div class="flex flex-col mt-2">
+                      <p>vous ne suivez actuellement personne</p>
+                      <button class="mt-2 text-blue-500 bg-white border-2 border-blue-600 rounded-lg uppercase py-2 px-3 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white"><a href="/news">nouveautés</a></button>
+                    </div>
+                  </div>
+                <?php
+              }
               foreach ($posts as $key => $post) {
                       ?>
                         <div class="bg-white p-4 rounded-lg border-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
                           <div class="w-full flex justify-between">
                               <p class="mb-2 text-light border-b-2 border-dark"><a href="/profile/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
-                              <form action="/follow" method="post">
-                                  <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
-                                  <button type="submit">Suivre</button>
-                              </form>
+                              <?php
+                                if (isset($_SESSION["user"]) && $_SESSION["user"]->getId() != $post["user"]->getId()) {
+                                  ?>
+                                    <form action="/follow" method="post">
+                                      <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                                      <button class="text-blue-500 bg-white border-2 border-blue-600 rounded-lg py-2 px-3 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit">Suivre</button>
+                                    </form>
+                                  <?php
+                                }
+                              ?>
+                              
                           </div>
                             <p class="ml-8 text-sm overflow-y-auto max-h-full"><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></a></p>
                             <p class="text-right"><?php echo $post["post"]->getCreateAt();?></p>
