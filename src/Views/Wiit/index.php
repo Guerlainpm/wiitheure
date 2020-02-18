@@ -18,13 +18,12 @@
     <div class="w-64 md:w-3/6 px-2 h-full">
         <div class="w-full mt-4 px-2 h-full overflow-y-auto pb-56">
             <div class="w-full">
-                <div class="py-1 mb-2 w-full h-full border-b-2 border-blue-600 font-bold	text-lg text-blue-600">Accueil</div>
+                <div class="py-1 mb-2 w-full h-full border-b-2 border-blue-600 font-bold	text-lg text-blue-600"><?php echo $data["where"] ?></div>
 
             </div>
             <div id="posts h-full">
             <?php
               foreach ($posts as $key => $post) {
-                  if ($key > 0) {
                       ?>
                         <div class="bg-white p-4 rounded-lg border-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
                           <div class="w-full flex justify-between">
@@ -37,8 +36,8 @@
                             <p class="ml-8 text-sm overflow-y-auto max-h-full"><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></a></p>
                             <p class="text-right"><?php echo $post["post"]->getCreateAt();?></p>
                       </div>
-                  <?php
-                }
+                      <?php 
+                
               }
             ?>
             </div>
