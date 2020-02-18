@@ -35,7 +35,7 @@
               }
               foreach ($posts as $key => $post) {
                       ?>
-                        <div class="bg-white p-4 rounded-lg border-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
+                        <div class="bg-light_3 p-4 border-l-2 border-light_2 h-40 mb-8 flex flex-col justify-between">
                           <div class="w-full flex justify-between">
                               <p class="mb-2 text-light border-b-2 border-dark"><a href="/profile/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
                               <?php
@@ -50,8 +50,11 @@
                               ?>
                               
                           </div>
-                            <p class="ml-8 text-sm overflow-y-auto max-h-full"><a href="/post/<?php echo $post["post"]->getId(); ?>"><?php echo $post["post"]->getContent(); ?></a></p>
-                            <p class="text-right"><?php echo $post["post"]->getCreateAt();?></p>
+                            <p class="ml-8 text-sm overflow-y-auto max-h-full"><?php echo $post["post"]->getContent(); ?></p>
+                            <div class="flex justify-between items-center">
+                              <a href="/post/<?php echo $post["post"]->getId(); ?>"><i class="text-light fas fa-comments"></i></a>
+                              <p class="text-right"><?php echo $post["post"]->getCreateAt();?></p>
+                            </div>
                       </div>
                       <?php 
                 
@@ -71,7 +74,7 @@
                       <li class="flex justify-between text-lg text-blue-600 md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition"><p><?php echo $value->getUsername(); ?></p>
                           <form action="/unfollow" method="post">
                               <input type="hidden" name="followed" value="<?php echo $value->getId(); ?>"/>
-                              <button class="duration-500 hover:text-red-500" type="submit"><i class="fas fa-trash"></i></button>
+                              <button class="duration-100 hover:text-red-500" type="submit"><i class="fas fa-trash"></i></button>
                           </form>
                       </li>
                     <?php
