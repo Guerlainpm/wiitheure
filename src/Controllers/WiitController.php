@@ -46,9 +46,9 @@ class WiitController extends Controller {
             $_POST["content"],
             $_SESSION["user"]->getId()
           );
-          $this->redirect('/');
+          $this->redirect('/news');
         }else {
-          $this->redirect('/create');
+          $this->redirect('/');
         }
       }
     }
