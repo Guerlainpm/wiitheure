@@ -89,19 +89,21 @@
       <div class="w-2/3 pb-48 pl-8 h-screen overflow-y-auto" id="wiit-<?php echo $_SESSION["user"]->getId();?>">
         <?php foreach ($data['wiit'] as $wiit) {
           ?>
-          <div class="bg-white p-4 rounded-lg border-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
+          <div class="bg-light_3 p-4 border-l-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
 
               <p class="mb-2 text-light border-b-2 border-dark"><?php echo $data['user']->getUsername(); ?></p>
 
               <div class="ml-8 text-sm overflow-y-auto max-h-full">
                 <?php echo $wiit["content"]; ?>
               </div>
-              <p class="text-right"><?php echo $wiit["create_at"]; ?></p>
+              <div class="flex justify-between items-center">
+                <a href="/post/<?php echo $wiit["id"]; ?>"><i class="text-light fas fa-comments"></i></a>
+                <p class="text-right"><?php echo $wiit["create_at"]; ?></p>
+              </div>
           </div>
           <?php
         } ?>
       </div>
-
   </div>
 
 
