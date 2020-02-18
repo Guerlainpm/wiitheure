@@ -47,7 +47,7 @@
 
                 <label class="lg:w-64 mb-2 border-b-2 md:w-48 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="mail">Mail</label>
-                <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="mail" type="text" name="register-mail"
+                <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="mail" type="email" name="register-mail"
                     value="<?php echo getOld("register-mail");?>">
 
 
