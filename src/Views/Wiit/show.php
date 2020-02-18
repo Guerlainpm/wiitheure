@@ -82,7 +82,7 @@
                                                             <p><?php echo $reponse["comment"]->getContent(); ?></p>
                                                         </div>
                                                         <?php
-                                                        if ($_SESSION["user"]->getId() == $value["user"]->getId()) {
+                                                        if ($_SESSION["user"]->getId() == $reponse["user"]->getId()) {
                                                         ?>
                                                             <form action="/delete/comment" method="post">
                                                             <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>"/>
