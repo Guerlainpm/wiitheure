@@ -1,7 +1,7 @@
 document.getElementById("create").addEventListener("click", function () {
-    document.getElementById("popupTitle").innerText = "Wiiter sur l'actualitée";
+    document.getElementById("popupTitle").innerText = "Wiiter sur l'actualité";
     document.getElementById("popupForm").innerHTML = "";
-    document.getElementById("popupForm").innerHTML = "<input required class=\"w-full border-2 border-gray-500\" name=\"content\" value=\"\"/> <input type=\"submit\" value=\"Wiiter\"/>";
+    document.getElementById("popupForm").innerHTML = "<textarea class=\"resize-none border-2 border-blue-600 \" name='content' id='' cols='30' rows='10' required></textarea> <input type=\"submit\" class=\"w-32 border-2 rounded bg-blue-600 text-white px-4 cursor-pointer\" value=\"Wiiter\"/>";
     document.getElementById("popup").className = "";
 
 });
