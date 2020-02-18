@@ -7,7 +7,7 @@
 <script src="https://kit.fontawesome.com/24b7d06377.js" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/24b7d06377.js" crossorigin="anonymous"></script>
 <div class="container mx-auto flex flex-col md:flex-row h-screen">
     <div class="md:w-1/6">
-        <div class="flex flex-row md:flex-col justify-center md:mt-4 w-full">
+        <div class="flex flex-row md:flex-col justify-center md:mt-4 w-full py-2 md:py-0">
             <a class='text-lg text-blue-600 md:w-full md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white' href="/"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-home"></i> <div class="font-bold hidden md:flex">Accueil</div> </button></a>
             <a class="text-lg text-blue-600 md:w-full md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white" href="/news"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-hashtag"></i><div class="font-bold hidden md:flex">Nouveautés</div></button> </a>
             <a class="text-lg text-blue-600 md:w-full md:border-b-2 md:border-b-2 border-blue-600 py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white" href="/profile/<?php echo $_SESSION['user']->getId(); ?>"><button class="px-4 w-full flex justify-between items-center"> <i class="fas fa-user"></i> <div class="font-bold hidden md:flex">Votre compte</div></button> </a>
@@ -55,7 +55,7 @@
                                   }
                                 }
                               ?>
-                              
+
                           </div>
                             <p class="text-md overflow-y-auto max-h-full"><?php echo $post["post"]->getContent(); ?></p>
                             <div class="flex justify-between items-center">
@@ -63,8 +63,8 @@
                               <p class="text-right"><?php echo $post["post"]->getCreateAt();?></p>
                             </div>
                       </div>
-                      <?php 
-                
+                      <?php
+
               }
             ?>
             </div>

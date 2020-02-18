@@ -17,15 +17,18 @@
       <?php
         if (isset($_SESSION['user'])) {
           ?>
-          <main class="md:py-32 py-24 h-full flex-grow container mx-auto">
+          <main class="md:py-32 py-20 h-full flex-grow container mx-auto">
             <?php echo $content; ?>
           </main>
           <?php
-        }
+        }else {
+            ?>
+            <main class="md:py-32 py-8 h-full flex-grow container mx-auto">
+              <?php echo $content; ?>
+            </main>
+            <?php
+          }
         ?>
-        <main class="md:py-32 py-8 h-full flex-grow container mx-auto">
-          <?php echo $content; ?>
-        </main>
         <?php
        ?>
 
