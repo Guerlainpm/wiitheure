@@ -39,13 +39,21 @@
                     <p class="mb-2 text-light border-b-2 border-dark"><a href="/profile/<?php echo $post["user"]->getId(); ?>"><?php echo $post["user"]->getUsername(); ?></a> :</p>
                     <?php
                       if (isset($_SESSION["user"]) && $_SESSION["user"]->getId() != $post["user"]->getId()) {
-                      ?>
-
-                        <form action="/follow" method="post">
-                          <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
-                          <button class=" md:py-2 md:px-3 py-0 md:border-2 md:border-blue-600 md:bg-white text-blue-500 rounded-lg transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit">Suivre</button>
-                        </form>
-                      <?php
+                        if (in_array($post["user"], $subs)) {
+                          ?>
+                            <form action="/unfollow" method="post">
+                                <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                                <button class="text-blue-600 duration-500 hover:text-red-500" type="submit"><i class="fas fa-trash"></i></button>
+                            </form>
+                          <?php
+                        } else {
+                            ?>
+                              <form action="/follow" method="post">
+                              <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
+                              <button class="text-blue-500 bg-white border-2 border-blue-600 rounded-lg py-2 px-3 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit">follow</button>
+                            </form>
+                            <?php
+                        }
                       }
                     ?>
                   </div>
