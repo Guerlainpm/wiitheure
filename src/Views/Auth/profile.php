@@ -1,7 +1,7 @@
 <?php
    ob_start();
 ?>
-<div class="bg-primary w-screen h-12 hidden flex m-0 fixed" id="blueNav-<?php echo $data["user"]->getId();?>">
+<div class="bg-primary w-screen h-12 hidden flex m-0 " id="blueNav-<?php echo $data["user"]->getId();?>">
   <div class="outline-none h-10 w-10 rounded-full text-white transition duration-100 cursor-pointer flex justify-center">
     <i class="fas fa-arrow-left p-4 ml-2" onclick="backnav(<?php echo $_SESSION['user']->getId();?>)"></i>
   </div>
