@@ -76,6 +76,7 @@
     </div>
 </div>
 <?php
+// test 
 $content = ob_get_clean();
 unset($_SESSION["errors"]);
 unset($_SESSION["old"]);
