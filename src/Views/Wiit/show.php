@@ -57,6 +57,19 @@
                                     <div class="p-1 bg-white">
                                         <p><a href="/profile/<?php echo $value["user"]->getId(); ?>"><?php echo $value["user"]->getUsername(); ?></a>:</p>
                                         <p><?php echo $value["comment"]->getContent(); ?></p>
+                                        <?php 
+
+                                        if ($_SESSION["user"]->getId() == $value["user"]->getId()) {
+
+                                        ?>
+                                            <form action="/delete/comment" method="post">
+                                                <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>"/>
+                                                <input type="hidden" name="comment_id" value="<?php echo $value["comment"]->getId(); ?>"/>
+                                                <button type="submit"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        <?php 
+                                        }
+                                        ?>
                                     </div>
                                     <ul>
                                     <?php
@@ -68,6 +81,17 @@
                                                             <a href="/profile/<?php echo $reponse["user"]->getId(); ?>"><?php echo $reponse["user"]->getUsername(); ?></a>:
                                                             <p><?php echo $reponse["comment"]->getContent(); ?></p>
                                                         </div>
+                                                        <?php
+                                                        if ($_SESSION["user"]->getId() == $value["user"]->getId()) {
+                                                        ?>
+                                                            <form action="/delete/comment" method="post">
+                                                            <input type="hidden" name="url" value="<?php echo $router->getUrl(); ?>"/>
+                                                            <input type="hidden" name="comment_id" value="<?php echo $reponse["comment"]->getId(); ?>"/>
+                                                            <button type="submit"><i class="fas fa-trash"></i></button>
+                                                        </form>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </li>
                                                 <?php
                                             }
@@ -116,6 +140,7 @@
                               <input type="hidden" name="followed" value="<?php echo $value->getId(); ?>"/>
                               <button class="duration-100 hover:text-red-500" type="submit"><i class="fas fa-trash"></i></button>
                           </form>
+                         
                       </li>
                     <?php
                   }

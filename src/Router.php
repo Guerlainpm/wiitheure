@@ -91,6 +91,9 @@ class Router {
                 $userController->update();
             }
 
+            elseif ($this->url == "/delete/comment") {
+                $userController->deleteComment();
+            }
         }
 
 
