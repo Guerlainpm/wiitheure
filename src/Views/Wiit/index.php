@@ -44,7 +44,7 @@
                                     ?>
                                       <form action="/unfollow" method="post">
                                           <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
-                                          <button class="duration-500 hover:text-red-500" type="submit"><i class="fas fa-trash"></i></button>
+                                          <button class="text-red-500 bg-white border-2 border-red-600 rounded-lg py-2 px-3 transition duration-500 hover:bg-red-500 hover:text-white hover:border-red-500" type="submit">unfollow</button>
                                       </form>
                                     <?php
                                   } else {
