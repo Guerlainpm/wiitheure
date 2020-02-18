@@ -7,9 +7,9 @@
   </div>
   <div class="text-white w-64 p-3 ml-8">Éditer le profil</div>
 </div>
-  <div class="flex flex-wrap justify-center mt-4">
+  <div class="flex flex-wrap justify-center">
     <div class="md:w-1/3 w-2/3 h-screen overflow-y-auto border-r-0 md:border-r-2 border-dark flex-col md:flex hidden" id="profil-<?php echo $_SESSION["user"]->getId();?>">
-      <h2 class="text-3xl text-light"><?php echo $_SESSION["user"]->getUsername(); ?></h2>
+      <h2 class="text-3xl text-light"><?php echo $data["user"]->getUsername(); ?></h2>
       <p>Créé le : <?php echo $_SESSION['user']->getCreate_at(); ?></p>
       <div class="w-full p-4 flex flex-col">
         <div class="w-full flex flex-col py-4 items-center">
@@ -78,15 +78,23 @@
               </div>
             </div>
             <div class="w-full pt-24">
+            <?php 
+                  if($data["user"]->getId() == $_SESSION["user"]->getId()){
+                    ?>
               <h3 class="mb-2 text-xl text-light border-b-2 border-dark">Vos abonnements</h3>
+              <?php
+                  }
+                  ?>
               <div class="h-64 overflow-auto">
                 <ul class="list-disc ml-8">
                   <?php
+                  if($data["user"]->getId() == $_SESSION["user"]->getId()){
                   foreach ($data["sub"] as $key => $sub) {
                     ?>
                     <li><?php echo $sub->getUsername(); ?></li>
                     <?php
                   }
+                }
                   ?>
                 </ul>
               </div>
@@ -96,8 +104,12 @@
         
     </div>
       <!-- Wiits -->
-      <div class="text-2xl md:hidden flex mt-4" onclick="mobile(<?php echo $_SESSION['user']->getId();?>)" id="bar-<?php echo $_SESSION["user"]->getId();?>"><i class="far fa-user cursor-pointer h-6"></i></div>
-      <div class="w-2/3 pb-48 pl-8 h-screen overflow-y-auto" id="wiit-<?php echo $_SESSION["user"]->getId();?>">
+      
+      <div class="w-2/3 pb-48 md:pl-8 h-screen overflow-y-auto" id="wiit-<?php echo $_SESSION["user"]->getId();?>">
+      <div class="text-2xl md:hidden flex justify-between my-3 content-center items-center px-2" id="bar-<?php echo $_SESSION["user"]->getId();?>">
+        <i class="far fa-user cursor-pointer" onclick="mobile(<?php echo $_SESSION['user']->getId();?>)"></i>
+        <a href="/"> <i class="fas fa-home"></i></a>
+      </div>
         <?php foreach ($data['wiit'] as $wiit) {
           ?>
           <div class="bg-light_3 p-4 border-l-2 border-light_2 h-48 mb-8 flex flex-col justify-between">
