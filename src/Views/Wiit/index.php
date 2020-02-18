@@ -44,7 +44,7 @@
                                     ?>
                                       <form action="/unfollow" method="post">
                                           <input type="hidden" name="followed" value="<?php echo $post["user"]->getId(); ?>"/>
-                                          <button class="text-red-500 bg-white border-2 border-red-600 rounded-lg py-2 px-3 transition duration-500 hover:bg-red-500 hover:text-white hover:border-red-500" type="submit">unfollow</button>
+                                          <button class="text-red-500 bg-white border-2 border-red-600 rounded-lg py-2 px-3 transition duration-500 hover:bg-red-500 hover:text-white hover:border-red-500" type="submit"><p class="md:block hidden">unfollow</p><span class="md:hidden block text-sm"><i class="fas fa-trash"></i></span></button>
                                       </form>
                                     <?php
                                   } else {
@@ -59,7 +59,7 @@
                               ?>
                               
                           </div>
-                            <p class="ml-8 text-sm overflow-y-auto max-h-full"><?php echo $post["post"]->getContent(); ?></p>
+                            <p class="text-md overflow-y-auto max-h-full"><?php echo $post["post"]->getContent(); ?></p>
                             <div class="flex justify-between items-center">
                               <a href="/post/<?php echo $post["post"]->getId(); ?>"><i class="text-light fas fa-comments"></i></a>
                               <p class="text-right"><?php echo $post["post"]->getCreateAt();?></p>
@@ -77,6 +77,11 @@
           <div class="h-screen overflow-y-auto w-full px-8 pb-64">
             <ul>
               <?php
+                if (count($subs) == 0) {
+                  ?>
+                      <li class="text-lg text-black w-full text-center border-blue-600 border-b-2">vous ne suivez actuellement personne</li>
+                  <?php
+                }
                 if (isset($_SESSION["user"])) {
                   foreach ($subs as $key => $value) {
                     ?>
