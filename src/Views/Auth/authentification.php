@@ -1,7 +1,7 @@
 <?php
    ob_start();
 ?>
-<div class="sm:flex flex-grow justify-center">
+<div class="sm:flex flex-grow justify-center h-screen overflow-y-auto pb-24 md:pb-56">
 
     <div class="flex p-6 xl:px-32 lg:px-20 md:px-4 sm:border-r-2 border-dark pr-13">
         <div class="xl:mt-28 lg:mt-24 md:mt-24 mt-20">
@@ -44,7 +44,7 @@
                     d'utilisateur</label>
                 <input class="border-l-4 border border-gray-400 outline-none mb-2 mb-2 lg:w-64 md:w-48 h-12 p-4 rounded " id="register-username" type="text"
                     name="register-username" value="<?php echo getOld("register-username");?>">
-    
+
                 <label class="lg:w-64 mb-2 border-b-2 md:w-48 border-dark xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="mail">Mail</label>
                 <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="mail" type="text" name="register-mail"
@@ -56,7 +56,7 @@
                     passe</label>
                 <input class="border-l-4 border border-gray-400 outline-none mb-2 lg:w-64 h-12 p-4 md:w-48 rounded " id="password" type="password" name="password"
                     value="<?php echo getOld("password");?>">
-            
+
                 <label class="lg:w-64 mb-2 border-b-2 border-dark md:w-48 xl:text-base lg:text-base md:text-sm sm:text-sm"
                     for="passwordConfirm">Confirmer
                     le
