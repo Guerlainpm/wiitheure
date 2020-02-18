@@ -17,7 +17,7 @@ ob_start();
             </div>
           </form>
             <div class="w-64 h-20 justify-between flex flex-col items-center">
-              <h2 class="flex flex-wrap items-center text-white">Connecter en tant que: <a href="/profile/<?php echo $_SESSION['user']->getId(); ?>" class="ml-2 underline"><?php echo $_SESSION["user"]->getUsername(); ?></a></h2>
+
               <form class="w-full" action="/logout" method="post">
                 <button class=" text-blue-500 bg-white w-full border-2 border-blue-600 rounded-lg uppercase py-1 px-2 transition duration-500 hover:bg-blue-600 hover:text-white hover:border-white" type="submit" name="button">Se déconnecter</button>
               </form>
