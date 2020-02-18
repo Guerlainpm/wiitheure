@@ -1,11 +1,11 @@
 <?php
    ob_start();
 ?>
-<div class="bg-primary w-screen h-12 hidden flex " id="blueNav-<?php echo $data["user"]->getId();?>">
+<div class="bg-primary w-screen h-12 hidden flex m-0 " id="blueNav-<?php echo $data["user"]->getId();?>">
   <div class="outline-none h-10 w-10 rounded-full text-white transition duration-100 cursor-pointer flex justify-center">
     <i class="fas fa-arrow-left p-4 ml-2" onclick="backnav(<?php echo $_SESSION['user']->getId();?>)"></i>
   </div>
-  <div class="text-white w-64 p-3 ml-8">Éditer le profil</div>
+  <div class="text-white w-64 p-3 mt-0 ml-8">Éditer le profil</div>
 </div>
   <div class="flex flex-wrap justify-center">
     <div class="md:w-1/3 w-2/3 h-screen overflow-y-auto border-r-0 md:border-r-2 border-dark flex-col md:flex hidden" id="profil-<?php echo $_SESSION["user"]->getId();?>">
